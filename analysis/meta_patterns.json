@@ -1,0 +1,39 @@
+{
+ "version": "2026-11-10",
+ "definition": "sentences with no checkable content: announcement, courtesy",
+ "not_meta": "abstentions: a sentence saying that no answer can be given asserts something that depends on the question, which no judge receives; they are matched by the abstention list and reported as behaviour, not as a verification",
+ "matching": "full match of a pattern on the normalised sentence",
+ "left_out_on_purpose": [
+  "announcements that name a subject",
+  "fragments without a proposition, such as a bare number or a citation marker"
+ ],
+ "normalisation": [
+  "curly quotes to straight quotes, non-breaking space to space",
+  "leading spaces, list markers, opening quotes and brackets, and numbering removed",
+  "trailing spaces, closing quotes, brackets and asterisks removed",
+  "single spaces, lower case"
+ ],
+ "patterns": {
+  "announcement": [
+   "(?:(?:sure|okay|ok|certainly|of course|alright|great)[,!.]? )?(?:here is|here's|here are|below is|the following is|this is) (?:a |an |the |my |your )?(?:(?:brief|short|concise|quick) )?(?:\\d+[- ]words? )?(?:article |news )?(?:summary|summaries|summarization|recap)(?: (?:that )?you (?:requested|asked for))?(?: of (?:the |this |your )?(?:provided |given |above |following )?(?:news articles?|news story|news|articles?|story|text|passages?|content)(?: you provided)?)?(?:,? (?:in|within|of|under|using)(?: about| approximately| around| at most| no more than| less than| fewer than| up to)? \\d+ (?:words?|characters?)(?: or (?:less|fewer))?)?(?:,? as requested| you requested)?[:.!]*",
+   "(?:(?:sure|okay|ok|certainly|of course|alright|great)[,!.]? )?(?:here are|here is|below are|the following are) (?:the |some )?(?:main|key|most important|important) (?:points|takeaways|highlights|details|facts)(?: (?:from|of|in) (?:the |this )?(?:news articles?|news story|news|articles?|story|text|passages?|content))?(?:,? (?:in|within|of|under|using)(?: about| approximately| around| at most| no more than| less than| fewer than| up to)? \\d+ (?:words?|characters?)(?: or (?:less|fewer))?)?[:.!]*",
+   "(?:(?:sure|okay|ok|certainly|of course|alright|great)[,!.]? )?(?:here is|here's|here are) (?:my |the |a |an )?(?:brief |short |concise )?(?:answers?|response|attempt to (?:briefly )?answer (?:the|your|this) question)(?: to (?:the|your|this) questions?(?: \\\"[^\\\"]*\\\")?)?(?:,? based (?:solely |only |purely )?on (?:the |these |this )?(?:(?:two|three|four|five|six|\\d+) )?(?:given |provided |above |following )?(?:passages?|information|context|text)(?: (?:given|provided|above))?)?[:.!]*",
+   "(?:based (?:solely |only |purely )?on (?:the |these |this )?(?:(?:two|three|four|five|six|\\d+) )?(?:given |provided |above |following )?(?:passages?|information|context|text)(?: (?:given|provided|above))?|according to (?:the )?(?:given |provided )?passages?),? (?:here is|here's|here are) (?:my |the |a |an )?(?:brief |short |concise )?(?:answers?|response|what i (?:can|could) (?:determine|find|gather))(?: to (?:the|your|this) questions?(?: \\\"[^\\\"]*\\\")?)?[:.!]*",
+   "(?:(?:therefore|thus|so|hence|consequently|in conclusion|as a result|unfortunately|note)[,:]? )?(?:based (?:solely |only |purely )?on (?:the |these |this )?(?:(?:two|three|four|five|six|\\d+) )?(?:given |provided |above |following )?(?:passages?|information|context|text)(?: (?:given|provided|above))?,? )?the (?:short |brief )?answer(?: to (?:the|your|this) question)?(?: \\\"[^\\\"]*\\\")? is(?: as follows)?:",
+   "(?:sure|certainly)[,!.]? i can answer (?:that|this|the|your) question(?: based (?:solely |only |purely )?on (?:the |these |this )?(?:(?:two|three|four|five|six|\\d+) )?(?:given |provided |above |following )?(?:passages?|information|context|text)(?: (?:given|provided|above))?)?[:.!]*",
+   "(?:(?:sure|okay|ok|certainly|of course|alright|great)[,!.]? )?(?:here are the steps(?: to follow| involved)?|here's how(?: to do it)?|(?:to do (?:this|that|so),? )?(?:please )?follow these steps|alternatively,? you can also follow these steps|the steps are(?: as follows)?):"
+  ],
+  "courtesy": [
+   "(?:i )?hope (?:this|that|it|these (?:tips|ideas|suggestions|steps))(?: information| answer| summary)? (?:helps?(?: you)?(?: out)?|answers (?:your|the) question)[:.!]*",
+   "(?:please )?(?:let me know|feel free to ask(?: me)?|do not hesitate to ask|don't hesitate to ask)(?: if you (?:have|need) (?:any )?(?:further |other |more |additional )?(?:questions?|assistance|help|information|clarification|details)(?: or (?:concerns|need (?:any )?(?:further |more |more detailed )(?:clarification|assistance|information|help|instructions)))?)?[:.!]*",
+   "if you (?:have|need) (?:any )?(?:further |other |more |additional )?(?:questions?|assistance|help|information|clarification|details)(?: or (?:concerns|need (?:any )?(?:further |more |more detailed )(?:clarification|assistance|information|help|instructions)))?,? (?:please )?(?:feel free to ask(?: me)?|let me know|i would be happy to help|i'd be happy to help|don't hesitate to ask|do not hesitate to ask)[:.!]*",
+   "if there(?:'s| is) anything else(?: (?:you need help with|i can help(?: you)? with))?,? (?:please )?(?:feel free to ask(?: me)?|let me know|i would be happy to help|i'd be happy to help|don't hesitate to ask|do not hesitate to ask)[:.!]*",
+   "(?:please )?let me know if there(?:'s| is| are) (?:anything else|any (?:other|further|more) questions)(?: i can (?:help|assist)(?: you)?(?: with)?)?[:.!]*",
+   "(?:sure|certainly|of course|absolutely)[,!.]? (?:i can|i'd be happy to|i would be happy to|i'll|i will|happy to) help(?: you)?(?: with (?:that|this))?[:.!]*",
+   "(?:and )?that's it[:.!]*",
+   "(?:sure|certainly|of course|okay|ok|great)[.!]+",
+   "thank you(?: for (?:asking|your question|reading))?[:.!]*",
+   "good luck[:.!]*"
+  ]
+ }
+}

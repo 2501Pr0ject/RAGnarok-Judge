@@ -1,0 +1,164 @@
+{
+ "judge_spec": "minicheck",
+ "judge": {
+  "stack": "torch",
+  "model": "minicheck",
+  "device": "mps",
+  "dtype": "float32",
+  "ragnarok_ai": "1.13.0",
+  "torch": "2.15.0",
+  "transformers": "5.22.2"
+ },
+ "release_cache": true,
+ "data": "ragtruth-out/test.jsonl",
+ "data_sha256": "5eb4aa53ad08a7dd73529008411735d51ed5589e0e407ab0a9af143c90608257",
+ "ids_from": "bench-1.13/quota/hhem-mps/attempts.jsonl",
+ "n_calls": 739,
+ "n_failed": 0,
+ "tokens": {
+  "min": 175,
+  "max": 2475,
+  "truncated": 0
+ },
+ "started_at": "2026-11-09T14:14:31+00:00",
+ "ended_at": "2026-11-09T14:22:11+00:00",
+ "duration_s": 459.4,
+ "load_s": 10.3,
+ "previous_run_ended_at": "2026-11-09T13:44:25+00:00",
+ "minutes_since_previous_run": 30.1,
+ "latency": {
+  "call_plus_release": {
+   "n": 739,
+   "p50_ms": 407.37,
+   "p90_ms": 1340.13,
+   "mean_ms": 607.22,
+   "max_ms": 3806.88
+  },
+  "call": {
+   "n": 739,
+   "p50_ms": 406.91,
+   "p90_ms": 1327.4,
+   "mean_ms": 602.47,
+   "max_ms": 3766.23
+  },
+  "release": {
+   "n": 739,
+   "p50_ms": 0.42,
+   "p90_ms": 14.87,
+   "mean_ms": 4.75,
+   "max_ms": 46.78
+  },
+  "short_input_tokens": 512,
+  "by_fifth_short_inputs": [
+   {
+    "fifth": 1,
+    "n": 34,
+    "p50_ms": 202.31,
+    "mean_tokens": 362,
+    "p50_ms_per_100_tokens": 57.78
+   },
+   {
+    "fifth": 2,
+    "n": 36,
+    "p50_ms": 369.5,
+    "mean_tokens": 394,
+    "p50_ms_per_100_tokens": 86.37
+   },
+   {
+    "fifth": 3,
+    "n": 97,
+    "p50_ms": 376.1,
+    "mean_tokens": 381,
+    "p50_ms_per_100_tokens": 93.54
+   },
+   {
+    "fifth": 4,
+    "n": 137,
+    "p50_ms": 278.64,
+    "mean_tokens": 346,
+    "p50_ms_per_100_tokens": 80.39
+   },
+   {
+    "fifth": 5,
+    "n": 137,
+    "p50_ms": 303.77,
+    "mean_tokens": 322,
+    "p50_ms_per_100_tokens": 101.26
+   }
+  ],
+  "by_tokens": [
+   {
+    "tokens": "0 to 512",
+    "n": 441,
+    "p50_ms": 292.0,
+    "p90_ms": 446.66
+   },
+   {
+    "tokens": "513 to 1024",
+    "n": 163,
+    "p50_ms": 628.43,
+    "p90_ms": 1008.32
+   },
+   {
+    "tokens": "1025 to 2048",
+    "n": 123,
+    "p50_ms": 1295.99,
+    "p90_ms": 1792.62
+   },
+   {
+    "tokens": "2049 to 4096",
+    "n": 12,
+    "p50_ms": 1939.71,
+    "p90_ms": 3277.32
+   }
+  ]
+ },
+ "memory": {
+  "footprint_after_load": 3629564960,
+  "peak_footprint_inputs": 4744594704,
+  "peak_footprint_total": 4744594704,
+  "max_resident": 422330368,
+  "allocator_max_before_release": {
+   "allocated": 3133648896,
+   "driver": 4337565696
+  }
+ },
+ "targets": [
+  {
+   "name": "median latency per call",
+   "value": "0.407 s",
+   "limit": "< 1.0 s",
+   "verdict": "met"
+  },
+  {
+   "name": "peak memory footprint over the 739 inputs",
+   "value": "4.74 GB (4525 MiB)",
+   "limit": "< 3.0 GB",
+   "verdict": "MISSED"
+  }
+ ],
+ "reported_without_threshold": [],
+ "thermal_before": [
+  "Note: No thermal warning level has been recorded",
+  "Note: No performance warning level has been recorded",
+  "Note: No CPU power status has been recorded"
+ ],
+ "thermal_after": [
+  "Note: No thermal warning level has been recorded",
+  "Note: No performance warning level has been recorded",
+  "Note: No CPU power status has been recorded"
+ ],
+ "machine": {
+  "platform": "macOS-26.5-arm64-arm-64bit",
+  "python": "3.12.9",
+  "model": "Mac14,2",
+  "memory_bytes": "17179869184",
+  "chip": "Apple M2"
+ },
+ "environment": {},
+ "score_check": {
+  "reference": "bench-1.13/quota/minicheck/attempts.jsonl",
+  "n": 739,
+  "max_abs_diff": 0.0
+ }
+}

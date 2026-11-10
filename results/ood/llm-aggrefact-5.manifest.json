@@ -1,0 +1,50 @@
+{
+ "source": "lytang/LLM-AggreFact@981dfd0bd8e58e7238a9ab92b2e6ea44bce918e4:data/test-00000-of-00001.parquet",
+ "source_sha256": "ba6976c3da990a9d7b11670efaf4e3c93c1bd0530061ec742afd6b2d5bce698c",
+ "output": "ood-out/llm-aggrefact-5.jsonl",
+ "output_sha256": "b01fe54c21845d3f0fe529be2e2829f249e9454402553a6223bc8737db6793e4",
+ "converted_at": "2026-11-09T14:48:17+00:00",
+ "overlap_report": "ood-out/overlap.json",
+ "overlap_rule": {
+  "shingle_words": 13,
+  "threshold": 0.5
+ },
+ "overlap_train_sha256": "10030e836e98758b1e5d4c1f12c0375335199e3377110ad538bb5656df06f614",
+ "datasets": {
+  "WiCE": {
+   "read": 358,
+   "written": 358,
+   "overlap_removed": 0,
+   "empty_removed": 0,
+   "documents": 355
+  },
+  "REVEAL": {
+   "read": 1710,
+   "written": 1710,
+   "overlap_removed": 0,
+   "empty_removed": 0,
+   "documents": 1498
+  },
+  "ClaimVerify": {
+   "read": 1088,
+   "written": 1088,
+   "overlap_removed": 0,
+   "empty_removed": 0,
+   "documents": 697
+  },
+  "FactCheck-GPT": {
+   "read": 1566,
+   "written": 1566,
+   "overlap_removed": 0,
+   "empty_removed": 0,
+   "documents": 1199
+  },
+  "ExpertQA": {
+   "read": 3702,
+   "written": 3702,
+   "overlap_removed": 0,
+   "empty_removed": 0,
+   "documents": 3135
+  }
+ }
+}

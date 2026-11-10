@@ -1,0 +1,32 @@
+{
+ "rule": "TARGETS.md, training set rule 1, validated list",
+ "excluded_when": {
+  "id_in": "drafts/train_excluded_ids_rule1.txt"
+ },
+ "source": "ragtruth-out/train-rule5.jsonl",
+ "source_sha256": "94bb93b320526a9a57f9accca9ac0920a48f9be78ee934c5d5e069bdf5bcacb2",
+ "output": "ragtruth-out/train-rule5-rule1.jsonl",
+ "output_sha256": "bac1d36fa7ce039bee2be92f9dcd042cc67d205f5a8f86a44eae4677d955edba",
+ "excluded_ids": "drafts/train_excluded_ids_rule1.txt",
+ "excluded_ids_sha256": "8e4a94d33499235fdf6b284781a5db38a0675650e1c62f2541e99c6646b59f09",
+ "written_at": "2026-11-10T06:08:36+00:00",
+ "sentences": {
+  "before": 54548,
+  "after": 54490,
+  "excluded": 58
+ },
+ "labels_before": {
+  "SUPPORTED": 49874,
+  "UNSUPPORTED": 3699,
+  "CONTRADICTED": 975
+ },
+ "labels_after": {
+  "SUPPORTED": 49874,
+  "UNSUPPORTED": 3699,
+  "CONTRADICTED": 917
+ },
+ "sources": {
+  "before": 1469,
+  "after": 1469
+ }
+}

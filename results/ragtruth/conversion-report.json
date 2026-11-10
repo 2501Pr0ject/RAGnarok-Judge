@@ -1,0 +1,168 @@
+{
+  "params": {
+    "command": "convert",
+    "data_dir": "RAGTruth/dataset",
+    "out_dir": "ragtruth-out",
+    "dev_ratio": 0.1,
+    "seed": 13,
+    "min_overlap": 3,
+    "cross_min_coverage": 0.25,
+    "min_words": 3,
+    "audit_size": 99
+  },
+  "responses": {
+    "total:Summary": 5658,
+    "total:Data2txt": 6198,
+    "excluded:out_of_scope_task": 6198,
+    "total:QA": 5934,
+    "kept": 11422,
+    "excluded:quality:truncated": 26,
+    "excluded:quality:incorrect_refusal": 144
+  },
+  "spans": {
+    "QA:Evident Baseless Info": 1562,
+    "QA:Evident Conflict": 423,
+    "QA:Subtle Baseless Info": 893,
+    "QA:Subtle Conflict": 49,
+    "QA:implicit_true": 846,
+    "Summary:Evident Baseless Info": 1057,
+    "Summary:Evident Conflict": 727,
+    "Summary:Subtle Baseless Info": 199,
+    "Summary:Subtle Conflict": 89,
+    "Summary:implicit_true": 175
+  },
+  "sentences": {
+    "total_in_scope": 73317,
+    "labelled": 71051,
+    "excluded": 2266,
+    "exclusion_reasons": {
+      "short_fragment": 1314,
+      "partial_span_crossing_sentence_boundary": 7,
+      "response_quality:truncated": 569,
+      "response_quality:incorrect_refusal": 157,
+      "citation_marker_only": 210,
+      "no_alphanumeric_content": 9
+    },
+    "excluded_rate_in_good_responses": 0.0212,
+    "rules": {
+      "no_span": 65187,
+      "conflict_span": 1213,
+      "baseless_span": 2168,
+      "baseless_span_implicit_true": 842,
+      "baseless_span+multi_sentence_span": 1350,
+      "conflict_span+multi_sentence_span": 120,
+      "baseless_span_implicit_true+multi_sentence_span": 171
+    },
+    "multi_span_sentences": 181,
+    "mixed_conflict_and_baseless": 67
+  },
+  "labels_by_split": {
+    "dev": {
+      "SUPPORTED": 5536,
+      "UNSUPPORTED": 363,
+      "CONTRADICTED": 112
+    },
+    "test": {
+      "SUPPORTED": 9777,
+      "CONTRADICTED": 139,
+      "UNSUPPORTED": 469
+    },
+    "train": {
+      "SUPPORTED": 49874,
+      "CONTRADICTED": 1082,
+      "UNSUPPORTED": 3699
+    }
+  },
+  "labels_by_task": {
+    "QA": {
+      "SUPPORTED": 35887,
+      "UNSUPPORTED": 3305,
+      "CONTRADICTED": 530
+    },
+    "Summary": {
+      "SUPPORTED": 29300,
+      "CONTRADICTED": 803,
+      "UNSUPPORTED": 1226
+    }
+  },
+  "labels_by_source_dataset": {
+    "CNN/DM": {
+      "SUPPORTED": 20884,
+      "CONTRADICTED": 578,
+      "UNSUPPORTED": 869
+    },
+    "MARCO": {
+      "SUPPORTED": 35887,
+      "UNSUPPORTED": 3305,
+      "CONTRADICTED": 530
+    },
+    "Recent News": {
+      "SUPPORTED": 8416,
+      "CONTRADICTED": 225,
+      "UNSUPPORTED": 357
+    }
+  },
+  "labels_by_generator": {
+    "gpt-3.5-turbo-0613": {
+      "SUPPORTED": 10597,
+      "CONTRADICTED": 43,
+      "UNSUPPORTED": 122
+    },
+    "gpt-4-0613": {
+      "SUPPORTED": 9868,
+      "CONTRADICTED": 55,
+      "UNSUPPORTED": 79
+    },
+    "llama-2-13b-chat": {
+      "SUPPORTED": 11744,
+      "CONTRADICTED": 251,
+      "UNSUPPORTED": 930
+    },
+    "llama-2-70b-chat": {
+      "SUPPORTED": 11470,
+      "CONTRADICTED": 126,
+      "UNSUPPORTED": 882
+    },
+    "llama-2-7b-chat": {
+      "SUPPORTED": 12450,
+      "UNSUPPORTED": 1354,
+      "CONTRADICTED": 455
+    },
+    "mistral-7B-instruct": {
+      "SUPPORTED": 9058,
+      "CONTRADICTED": 403,
+      "UNSUPPORTED": 1164
+    }
+  },
+  "sources_by_split": {
+    "dev": 163,
+    "test": 300,
+    "train": 1469
+  },
+  "responses_with_spans_but_all_supported": 0,
+  "context_chars_by_task": {
+    "Summary": {
+      "p50": 2544.0,
+      "p90": 6017.8,
+      "p99": 9637.96,
+      "max": 10663
+    },
+    "QA": {
+      "p50": 1261.0,
+      "p90": 1979.6,
+      "p99": 2312.84,
+      "max": 2825
+    }
+  },
+  "context_over_6000_chars_rate": {
+    "Summary": 0.1029,
+    "QA": 0.0
+  },
+  "sentence_chars": {
+    "p50": 106.0,
+    "p90": 176.0,
+    "p99": 254.0,
+    "max": 1087
+  },
+  "leakage_check": "passed"
+}

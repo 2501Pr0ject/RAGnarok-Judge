@@ -1,0 +1,603 @@
+{
+ "judge": "minicheck_bounded:MiniCheckBoundedMps",
+ "config_hash": "cbccef85dc7ad2138c39b0adc01f883056a7aa539e6334d6bbb1c28a01949d30",
+ "device": "mps",
+ "reference": "ood-runs/minicheck-mps",
+ "reference_config_hash": "d5ab1a32c50afb483cf1fce482efd679c4bdc43212624fdd33a2db121dcb47dd",
+ "dataset": "WiCE",
+ "started_at": "2026-11-09T19:53:38+00:00",
+ "load_s": 8.143581542186439,
+ "torch": "2.15.0",
+ "memory": {
+  "footprint_after_load": 3609740248,
+  "footprint_lifetime_max": 5808112840,
+  "max_resident": 545882112
+ },
+ "groups": {
+  "controls": {
+   "calls": 20,
+   "compared_with_reference": 20,
+   "chunks": 58,
+   "forward_passes": 20,
+   "duration_s": 27.345723958220333,
+   "stock_duration_s": 35.10807579243556,
+   "exactly_equal": 20,
+   "max_score_difference": 0.0,
+   "tokens_and_truncation_equal": true,
+   "largest_stock_attention_gib": 0.2493085265159607,
+   "driver_before_release_max": 5411307520,
+   "footprint_lifetime_max_after_group": 5806867656
+  },
+  "longest": {
+   "calls": 1,
+   "compared_with_reference": 1,
+   "chunks": 36,
+   "forward_passes": 7,
+   "duration_s": 14.749271417036653,
+   "stock_duration_s": 29.521570292301476,
+   "exactly_equal": 0,
+   "max_score_difference": 4.563480615615845e-08,
+   "tokens_and_truncation_equal": true,
+   "largest_stock_attention_gib": 0.5378732681274414,
+   "driver_before_release_max": 5411307520,
+   "footprint_lifetime_max_after_group": 5807736008
+  },
+  "heaviest": {
+   "calls": 1,
+   "compared_with_reference": 1,
+   "chunks": 7,
+   "forward_passes": 7,
+   "duration_s": 10.346832207869738,
+   "stock_duration_s": 67.07611062470824,
+   "exactly_equal": 0,
+   "max_score_difference": 5.066394805908203e-07,
+   "tokens_and_truncation_equal": true,
+   "largest_stock_attention_gib": 1.75,
+   "driver_before_release_max": 5411307520,
+   "footprint_lifetime_max_after_group": 5808112840
+  }
+ },
+ "checks": [
+  {
+   "name": "controls: scores exactly equal to the stock run",
+   "value": "20 of 20",
+   "met": true
+  },
+  {
+   "name": "longest: largest score difference with the stock run at most 1e-05",
+   "value": "4.56e-08 (0 of 1 exactly equal)",
+   "met": true
+  },
+  {
+   "name": "heaviest: largest score difference with the stock run at most 1e-05",
+   "value": "5.07e-07 (0 of 1 exactly equal)",
+   "met": true
+  },
+  {
+   "name": "tokens sent and truncation flag equal to the stock run",
+   "value": "True",
+   "met": true
+  },
+  {
+   "name": "peak memory footprint below 8 GB",
+   "value": "5.81 GB",
+   "met": true
+  }
+ ],
+ "calls": [
+  {
+   "group": "controls",
+   "id": "agf-wice-02614",
+   "words": 415,
+   "chunks": 1,
+   "stock_batches": [
+    [
+     1,
+     688
+    ]
+   ],
+   "stock_attention_gib": 0.0282135009765625,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 1.2080014576204121,
+   "stock_latency_s": 1.7394231660291553,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 3330932736,
+   "footprint_after_call": 3716908232,
+   "footprint_lifetime_max": 3716908232
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02615",
+   "words": 266,
+   "chunks": 1,
+   "stock_batches": [
+    [
+     1,
+     436
+    ]
+   ],
+   "stock_attention_gib": 0.011330604553222656,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 0.25102362502366304,
+   "stock_latency_s": 0.26762195816263556,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 3297378304,
+   "footprint_after_call": 3683435720,
+   "footprint_lifetime_max": 3716973768
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02616",
+   "words": 1314,
+   "chunks": 3,
+   "stock_batches": [
+    [
+     3,
+     725
+    ]
+   ],
+   "stock_attention_gib": 0.09398907423019409,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 1.2369710421189666,
+   "stock_latency_s": 1.7095371671020985,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4731880648,
+   "footprint_lifetime_max": 4731880648
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02617",
+   "words": 1960,
+   "chunks": 4,
+   "stock_batches": [
+    [
+     4,
+     823
+    ]
+   ],
+   "stock_attention_gib": 0.16148781776428223,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 1.9284041249193251,
+   "stock_latency_s": 2.1898722499608994,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4371120128,
+   "footprint_after_call": 4765959368,
+   "footprint_lifetime_max": 4765959368
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02618",
+   "words": 557,
+   "chunks": 2,
+   "stock_batches": [
+    [
+     2,
+     744
+    ]
+   ],
+   "stock_attention_gib": 0.06598663330078125,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 0.9281422500498593,
+   "stock_latency_s": 1.011713916901499,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4732486856,
+   "footprint_lifetime_max": 4765959368
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02619",
+   "words": 1695,
+   "chunks": 4,
+   "stock_batches": [
+    [
+     4,
+     811
+    ]
+   ],
+   "stock_attention_gib": 0.1568129062652588,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 1.892542665824294,
+   "stock_latency_s": 2.1903080414049327,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4732503240,
+   "footprint_lifetime_max": 4765959368
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02620",
+   "words": 2428,
+   "chunks": 5,
+   "stock_batches": [
+    [
+     5,
+     765
+    ]
+   ],
+   "stock_attention_gib": 0.1744106411933899,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 2.1657844996079803,
+   "stock_latency_s": 2.6145018748939037,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4371120128,
+   "footprint_after_call": 4766172360,
+   "footprint_lifetime_max": 4766172360
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02621",
+   "words": 582,
+   "chunks": 2,
+   "stock_batches": [
+    [
+     2,
+     717
+    ]
+   ],
+   "stock_attention_gib": 0.06128418445587158,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 0.8603624575771391,
+   "stock_latency_s": 0.895599250216037,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4732732616,
+   "footprint_lifetime_max": 4766172360
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02622",
+   "words": 304,
+   "chunks": 1,
+   "stock_batches": [
+    [
+     1,
+     576
+    ]
+   ],
+   "stock_attention_gib": 0.019775390625,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 0.3571291659027338,
+   "stock_latency_s": 0.3381440001539886,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4732912840,
+   "footprint_lifetime_max": 4766172360
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02623",
+   "words": 3087,
+   "chunks": 7,
+   "stock_batches": [
+    [
+     7,
+     773
+    ]
+   ],
+   "stock_attention_gib": 0.2493085265159607,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 3.0489173331297934,
+   "stock_latency_s": 3.4836689583025873,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 5411307520,
+   "footprint_after_call": 5806851272,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02624",
+   "words": 631,
+   "chunks": 2,
+   "stock_batches": [
+    [
+     2,
+     743
+    ]
+   ],
+   "stock_attention_gib": 0.06580936908721924,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 0.9292610413394868,
+   "stock_latency_s": 1.3142127920873463,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4733224136,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02625",
+   "words": 836,
+   "chunks": 2,
+   "stock_batches": [
+    [
+     2,
+     896
+    ]
+   ],
+   "stock_attention_gib": 0.095703125,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 1.0484892502427101,
+   "stock_latency_s": 1.1548369592055678,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4733224136,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02626",
+   "words": 564,
+   "chunks": 2,
+   "stock_batches": [
+    [
+     2,
+     852
+    ]
+   ],
+   "stock_attention_gib": 0.08653450012207031,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 1.036954625044018,
+   "stock_latency_s": 1.1331032500602305,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4733224136,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02627",
+   "words": 2235,
+   "chunks": 5,
+   "stock_batches": [
+    [
+     5,
+     843
+    ]
+   ],
+   "stock_attention_gib": 0.21178990602493286,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 2.425393041688949,
+   "stock_latency_s": 3.5224964157678187,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4371120128,
+   "footprint_after_call": 4733142216,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02628",
+   "words": 489,
+   "chunks": 1,
+   "stock_batches": [
+    [
+     1,
+     1039
+    ]
+   ],
+   "stock_attention_gib": 0.06434446573257446,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 0.6966970828361809,
+   "stock_latency_s": 0.7389421667903662,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4733174984,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02629",
+   "words": 1150,
+   "chunks": 3,
+   "stock_batches": [
+    [
+     3,
+     863
+    ]
+   ],
+   "stock_attention_gib": 0.1331750750541687,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 1.59078016737476,
+   "stock_latency_s": 1.7058781660161912,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4733207752,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02630",
+   "words": 457,
+   "chunks": 1,
+   "stock_batches": [
+    [
+     1,
+     747
+    ]
+   ],
+   "stock_attention_gib": 0.03325992822647095,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 0.504071416798979,
+   "stock_latency_s": 0.4682021252810955,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4733224136,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02631",
+   "words": 1058,
+   "chunks": 3,
+   "stock_batches": [
+    [
+     3,
+     734
+    ]
+   ],
+   "stock_attention_gib": 0.09633708000183105,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 1.3058024579659104,
+   "stock_latency_s": 1.399168916977942,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4733256904,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02632",
+   "words": 1281,
+   "chunks": 3,
+   "stock_batches": [
+    [
+     3,
+     823
+    ]
+   ],
+   "stock_attention_gib": 0.12111586332321167,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 1.5101047083735466,
+   "stock_latency_s": 1.6953342920169234,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4337565696,
+   "footprint_after_call": 4733256904,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "controls",
+   "id": "agf-wice-02633",
+   "words": 2506,
+   "chunks": 6,
+   "stock_batches": [
+    [
+     6,
+     728
+    ]
+   ],
+   "stock_attention_gib": 0.18953704833984375,
+   "split": false,
+   "forward_passes": 1,
+   "latency_s": 2.4201925829984248,
+   "stock_latency_s": 5.535510125104338,
+   "score_difference": 0.0,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 4371120128,
+   "footprint_after_call": 4766811336,
+   "footprint_lifetime_max": 5806867656
+  },
+  {
+   "group": "longest",
+   "id": "agf-wice-02865",
+   "words": 17356,
+   "chunks": 36,
+   "stock_batches": [
+    [
+     16,
+     737
+    ],
+    [
+     16,
+     751
+    ],
+    [
+     4,
+     659
+    ]
+   ],
+   "stock_attention_gib": 0.5378732681274414,
+   "split": true,
+   "forward_passes": 7,
+   "latency_s": 14.749122207984328,
+   "stock_latency_s": 29.521570292301476,
+   "score_difference": 4.563480615615845e-08,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 5411307520,
+   "footprint_after_call": 4733994184,
+   "footprint_lifetime_max": 5807736008
+  },
+  {
+   "group": "heaviest",
+   "id": "agf-wice-02963",
+   "words": 3728,
+   "chunks": 7,
+   "stock_batches": [
+    [
+     7,
+     2048
+    ]
+   ],
+   "stock_attention_gib": 1.75,
+   "split": true,
+   "forward_passes": 7,
+   "latency_s": 10.346738209016621,
+   "stock_latency_s": 67.07611062470824,
+   "score_difference": 5.066394805908203e-07,
+   "tokens_equal": true,
+   "truncation_equal": true,
+   "driver_before_release_max": 5411307520,
+   "footprint_after_call": 5800395976,
+   "footprint_lifetime_max": 5808112840
+  }
+ ]
+}

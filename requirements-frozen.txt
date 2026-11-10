@@ -1,0 +1,16 @@
+# Exact versions used for every measurement and analysis recorded in TARGETS.md
+# (Apple M2, macOS, 2026-11-06 to 2026-11-10). Two environments on Python 3.12.9.
+#
+# Python 3.12.9
+#
+# PyTorch environment: conversion, analysis, baselines, out-of-domain runs, cost of the
+# PyTorch MPS runs.
+numpy==2.5.4
+pysbd==0.3.4
+torch==2.15.0
+transformers==5.22.2
+ragnarok-ai==1.13.0
+#
+# MLX environment: cost of the candidate bases on MLX (a separate virtual environment).
+mlx==0.32.4
+mlx-lm==0.32.2

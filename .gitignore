@@ -1,0 +1,26 @@
+# Data folders: converted RAGTruth splits, LLM-AggreFact conversion, judge runs, cost runs.
+# None of them is ever committed; only the aggregates copied into results/ are.
+/ragtruth-out/
+/ood-out/
+/ood-runs/
+/bench/
+/bench-1.13/
+/cost/runs/
+/RAGTruth/
+/audit-multi/
+*.jsonl
+*.csv
+*.parquet
+*.pkl
+
+# Python environments and caches
+.venv*/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# System files
+.DS_Store

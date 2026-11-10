@@ -1,0 +1,338 @@
+{
+  "judge": "minicheck",
+  "criterion": "faithfulness",
+  "config": {
+    "judge_class": "ragnarok_ai.judges.minicheck.MiniCheckJudge",
+    "judge_kind": "classifier",
+    "model": "lytang/MiniCheck-Flan-T5-Large",
+    "criterion": "faithfulness",
+    "verdict_policy": {
+      "pass_threshold": 0.5,
+      "fail_threshold": null,
+      "kind": "score_threshold",
+      "type": "ScoreThreshold"
+    },
+    "ragnarok_ai_version": "1.13.0",
+    "backend": "transformers",
+    "model_requested": null,
+    "model_digest": "lytang/MiniCheck-Flan-T5-Large@96eafd01cee2d16cf81aaa2fb226b14f422a37b3",
+    "options": [
+      [
+        "device",
+        "mps"
+      ],
+      [
+        "dtype",
+        "float32"
+      ],
+      [
+        "max_model_len",
+        2048
+      ]
+    ],
+    "prompt_format": null,
+    "prompt_template_sha256": null,
+    "unit": "answer",
+    "aggregation": null,
+    "input_transforms": [],
+    "segmenter": null,
+    "judge_specific": [
+      [
+        "checkpoint",
+        "flan-t5-large"
+      ],
+      [
+        "chunk_size",
+        500
+      ],
+      [
+        "chunk_unit",
+        "words"
+      ],
+      [
+        "official_code",
+        "https://github.com/Liyan06/MiniCheck@b58b9fa69acbd1015ec970fa65dd752413a053d2"
+      ],
+      [
+        "question_used",
+        false
+      ],
+      [
+        "sentence_splitter",
+        "nltk-3.10.4:punkt_tab-english:c307093cdaa14d1b216374f36ef1e74aba78622570e0b5687af0726d195f1045"
+      ],
+      [
+        "threshold_calibrated",
+        false
+      ],
+      [
+        "training_length",
+        2048
+      ],
+      [
+        "training_length_kind",
+        "official truncation length (max_model_len)"
+      ]
+    ],
+    "source_commit": null
+  },
+  "config_hash": "d5ab1a32c50afb483cf1fce482efd679c4bdc43212624fdd33a2db121dcb47dd",
+  "level": "sentence",
+  "prev_sentence": {
+    "records_with_prev_sentence": 8726,
+    "transmitted_to_judge": false
+  },
+  "records": {
+    "total": 10385,
+    "evaluated": 10385,
+    "scored": 10385,
+    "failed": 0
+  },
+  "sample": null,
+  "sample_dependent_metrics": false,
+  "prevalence_adjusted": null,
+  "threshold": {
+    "value": 0.2,
+    "source": "dev (6011 scored records, F1 of not supported maximized)",
+    "policy_threshold": 0.5,
+    "rule": "PASS if score >= 0.20 (source: dev (6011 scored records, F1 of not supported maximized)); PARTIAL and FAIL counted as not supported"
+  },
+  "binary": {
+    "n": 10385.0,
+    "minority_count": 608.0,
+    "kappa_interpretable": 1.0,
+    "accuracy": 0.88608570052961,
+    "balanced_accuracy": 0.7690594837238847,
+    "kappa": 0.3424281492203019,
+    "precision_not_supported": 0.28687916975537436,
+    "recall_not_supported": 0.6365131578947368,
+    "f1_not_supported": 0.3955033214103219,
+    "majority_baseline_accuracy": 0.9414540202214733,
+    "human_pass_rate": 0.9414540202214733
+  },
+  "bootstrap": {
+    "resamples": 1000,
+    "seed": 0,
+    "groups": 300,
+    "excluded_single_class_draws": 0,
+    "reliable": true,
+    "intervals": {
+      "f1_not_supported": [
+        0.3442437923250565,
+        0.4503249767873723
+      ],
+      "balanced_accuracy": [
+        0.7372798641619129,
+        0.796632399557435
+      ],
+      "kappa": [
+        0.292920897123044,
+        0.3941352369132401
+      ]
+    }
+  },
+  "failures": {},
+  "truncations": 0,
+  "latency_ms": {
+    "p50": 350.03833286464214,
+    "p90": 1424.3031251244247,
+    "n": 10385
+  },
+  "input_length": {
+    "training_length": 2048,
+    "kind": "official truncation length (max_model_len)",
+    "with_token_count": 10385,
+    "over_training_length": 162,
+    "share_over_training_length": 0.015599422243620606,
+    "max_prompt_tokens": 2672
+  },
+  "peak_rss_mb_harness": 531.3,
+  "model_memory": null,
+  "duration_s": 6117.87,
+  "by": {
+    "task": {
+      "QA": {
+        "n": 5491.0,
+        "minority_count": 350.0,
+        "kappa_interpretable": 1.0,
+        "accuracy": 0.8586778364596612,
+        "balanced_accuracy": 0.800716091922083,
+        "kappa": 0.3368471018879785,
+        "precision_not_supported": 0.2734042553191489,
+        "recall_not_supported": 0.7342857142857143,
+        "f1_not_supported": 0.3984496124031008,
+        "majority_baseline_accuracy": 0.9362593334547441,
+        "human_pass_rate": 0.9362593334547441
+      },
+      "Summary": {
+        "n": 4894.0,
+        "minority_count": 258.0,
+        "kappa_interpretable": 1.0,
+        "accuracy": 0.9168369431957499,
+        "balanced_accuracy": 0.721847389155313,
+        "kappa": 0.34762780954352357,
+        "precision_not_supported": 0.31784841075794623,
+        "recall_not_supported": 0.5038759689922481,
+        "f1_not_supported": 0.3898050974512744,
+        "majority_baseline_accuracy": 0.9472823865958316,
+        "human_pass_rate": 0.9472823865958316
+      }
+    },
+    "generator": {
+      "gpt-3.5-turbo-0613": {
+        "n": 1588.0,
+        "minority_count": 17.0,
+        "kappa_interpretable": 1.0,
+        "accuracy": 0.9508816120906801,
+        "balanced_accuracy": 0.6551465907814431,
+        "kappa": 0.11801649126304718,
+        "precision_not_supported": 0.0821917808219178,
+        "recall_not_supported": 0.35294117647058826,
+        "f1_not_supported": 0.13333333333333333,
+        "majority_baseline_accuracy": 0.989294710327456,
+        "human_pass_rate": 0.989294710327456
+      },
+      "gpt-4-0613": {
+        "n": 1525.0,
+        "minority_count": 9.0,
+        "kappa_interpretable": 0.0,
+        "accuracy": 0.9495081967213115,
+        "balanced_accuracy": 0.5327982996188801,
+        "kappa": 0.01501488906597393,
+        "precision_not_supported": 0.014285714285714285,
+        "recall_not_supported": 0.1111111111111111,
+        "f1_not_supported": 0.025316455696202528,
+        "majority_baseline_accuracy": 0.9940983606557378,
+        "human_pass_rate": 0.9940983606557378
+      },
+      "llama-2-13b-chat": {
+        "n": 1900.0,
+        "minority_count": 109.0,
+        "kappa_interpretable": 1.0,
+        "accuracy": 0.8552631578947368,
+        "balanced_accuracy": 0.7767558485598225,
+        "kappa": 0.29259205103626806,
+        "precision_not_supported": 0.23734177215189872,
+        "recall_not_supported": 0.6880733944954128,
+        "f1_not_supported": 0.3529411764705882,
+        "majority_baseline_accuracy": 0.9426315789473684,
+        "human_pass_rate": 0.9426315789473684
+      },
+      "llama-2-70b-chat": {
+        "n": 1783.0,
+        "minority_count": 114.0,
+        "kappa_interpretable": 1.0,
+        "accuracy": 0.873247335950645,
+        "balanced_accuracy": 0.8015304888944951,
+        "kappa": 0.36285382691219153,
+        "precision_not_supported": 0.2971014492753623,
+        "recall_not_supported": 0.7192982456140351,
+        "f1_not_supported": 0.4205128205128205,
+        "majority_baseline_accuracy": 0.9360628154795289,
+        "human_pass_rate": 0.9360628154795289
+      },
+      "llama-2-7b-chat": {
+        "n": 2065.0,
+        "minority_count": 184.0,
+        "kappa_interpretable": 1.0,
+        "accuracy": 0.8324455205811138,
+        "balanced_accuracy": 0.733965802186626,
+        "kappa": 0.3119291676778413,
+        "precision_not_supported": 0.2912371134020619,
+        "recall_not_supported": 0.6141304347826086,
+        "f1_not_supported": 0.3951048951048951,
+        "majority_baseline_accuracy": 0.9108958837772397,
+        "human_pass_rate": 0.9108958837772397
+      },
+      "mistral-7B-instruct": {
+        "n": 1524.0,
+        "minority_count": 175.0,
+        "kappa_interpretable": 1.0,
+        "accuracy": 0.881233595800525,
+        "balanced_accuracy": 0.7712909033146246,
+        "kappa": 0.48151963069335224,
+        "precision_not_supported": 0.48672566371681414,
+        "recall_not_supported": 0.6285714285714286,
+        "f1_not_supported": 0.5486284289276807,
+        "majority_baseline_accuracy": 0.8851706036745407,
+        "human_pass_rate": 0.8851706036745407
+      }
+    }
+  },
+  "calibration": {
+    "brier": 0.12431863865908137,
+    "ece": 0.15414142629049166,
+    "bins": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "count": 926.0,
+        "confidence": 0.04664716314872401,
+        "observed": 0.6360691144708424
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "count": 423.0,
+        "confidence": 0.14402773252404327,
+        "observed": 0.8817966903073287
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.3,
+        "count": 235.0,
+        "confidence": 0.2458920881469199,
+        "observed": 0.9276595744680851
+      },
+      {
+        "lower": 0.3,
+        "upper": 0.4,
+        "count": 172.0,
+        "confidence": 0.35417586547690766,
+        "observed": 0.9244186046511628
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "count": 167.0,
+        "confidence": 0.44538219835229975,
+        "observed": 0.9221556886227545
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6,
+        "count": 190.0,
+        "confidence": 0.5530157230402294,
+        "observed": 0.9368421052631579
+      },
+      {
+        "lower": 0.6,
+        "upper": 0.7,
+        "count": 243.0,
+        "confidence": 0.652680325410003,
+        "observed": 0.9423868312757202
+      },
+      {
+        "lower": 0.7,
+        "upper": 0.8,
+        "count": 309.0,
+        "confidence": 0.7554081074628244,
+        "observed": 0.948220064724919
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "count": 689.0,
+        "confidence": 0.8597038996409955,
+        "observed": 0.965166908563135
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "count": 7031.0,
+        "confidence": 0.9656676388604087,
+        "observed": 0.9840705447304793
+      }
+    ]
+  }
+}

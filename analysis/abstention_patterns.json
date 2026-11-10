@@ -1,0 +1,20 @@
+{
+ "version": "2026-11-10",
+ "definition": "sentences saying that no answer can be given, without naming what is missing; reported as a category of their own, apart from meta sentences",
+ "matching": "full match of a pattern on the normalised sentence",
+ "normalisation": [
+  "curly quotes to straight quotes, non-breaking space to space",
+  "leading spaces, list markers, opening quotes and brackets, and numbering removed",
+  "trailing spaces, closing quotes, brackets and asterisks removed",
+  "single spaces, lower case"
+ ],
+ "patterns": {
+  "abstention": [
+   "(?:(?:therefore|thus|so|hence|consequently|in conclusion|as a result|unfortunately|note)[,:]? )?(?:i am |i'm |we are |i was )?unable to (?:provide an answer|answer)(?: (?:the|this|your|that) question)?(?: (?:based (?:solely |only |purely )?on (?:the |these |this )?(?:(?:two|three|four|five|six|\\d+) )?(?:given |provided |above |following )?(?:passages?|information|context|text)(?: (?:given|provided|above))?|based (?:solely |only )?on (?:this|the) passage|(?:with|from) (?:the )?(?:given|provided) (?:passages|information)))?[:.!]*",
+   "(?:(?:therefore|thus|so|hence|consequently|in conclusion|as a result|unfortunately|note)[,:]? )?i (?:cannot|can't|can not|am not able to|do not have enough information to|don't have enough information to) (?:provide (?:an|a (?:definitive|specific|clear|direct|accurate|precise|complete)) answer|answer)(?: (?:to )?(?:the|this|your|that) question)?(?: (?:based (?:solely |only |purely )?on (?:the |these |this )?(?:(?:two|three|four|five|six|\\d+) )?(?:given |provided |above |following )?(?:passages?|information|context|text)(?: (?:given|provided|above))?|without (?:additional|more|further) (?:information|context)))?[:.!]*",
+   "(?:(?:therefore|thus|so|hence|consequently|in conclusion|as a result|unfortunately|note)[,:]? )?(?:the |these )?(?:given |provided )?(?:passages?(?: \\d+)?|context|information(?: provided)?) (?:do|does) not (?:provide|contain|offer|give|include|have) (?:enough|sufficient|adequate|any|the necessary|relevant) (?:relevant )?information to (?:answer|address) (?:the|this|your|that) (?:specific )?question[:.!]*",
+   "(?:(?:therefore|thus|so|hence|consequently|in conclusion|as a result|unfortunately|note)[,:]? )?there is (?:not enough|no|insufficient) information(?: (?:in|from) (?:the )?(?:given |provided )?passages?)? to answer (?:the|this|your) question[:.!]*",
+   "(?:(?:therefore|thus|so|hence|consequently|in conclusion|as a result|unfortunately|note)[,:]? )?(?:the|this|your) question cannot be answered(?: based (?:solely |only |purely )?on (?:the |these |this )?(?:(?:two|three|four|five|six|\\d+) )?(?:given |provided |above |following )?(?:passages?|information|context|text)(?: (?:given|provided|above))?)?[:.!]*"
+  ]
+ }
+}

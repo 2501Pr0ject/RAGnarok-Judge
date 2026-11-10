@@ -1,0 +1,180 @@
+{
+ "judge_spec": "hf:PleIAs/Pleias-RAG-350M",
+ "judge": {
+  "stack": "torch",
+  "model": "PleIAs/Pleias-RAG-350M",
+  "revision": "db001b29a33532583d14979c3c38ef04b6d59352",
+  "model_type": "llama",
+  "device": "mps",
+  "dtype": "float16",
+  "parameters": 353424384,
+  "max_position_embeddings": 4096,
+  "max_length": 4096,
+  "template": "pleias",
+  "template_tokens": 21,
+  "torch": "2.15.0",
+  "transformers": "5.22.2"
+ },
+ "release_cache": true,
+ "data": "ragtruth-out/test.jsonl",
+ "data_sha256": "5eb4aa53ad08a7dd73529008411735d51ed5589e0e407ab0a9af143c90608257",
+ "ids_from": "bench-1.13/quota/hhem-mps/attempts.jsonl",
+ "n_calls": 739,
+ "n_failed": 0,
+ "tokens": {
+  "min": 195,
+  "max": 2203,
+  "truncated": 0
+ },
+ "started_at": "2026-11-09T12:51:28+00:00",
+ "ended_at": "2026-11-09T12:54:46+00:00",
+ "duration_s": 198.1,
+ "load_s": 5.0,
+ "previous_run_ended_at": "2026-11-09T12:51:11+00:00",
+ "minutes_since_previous_run": 0.3,
+ "latency": {
+  "call_plus_release": {
+   "n": 739,
+   "p50_ms": 196.35,
+   "p90_ms": 505.69,
+   "mean_ms": 258.58,
+   "max_ms": 1288.22
+  },
+  "call": {
+   "n": 739,
+   "p50_ms": 196.21,
+   "p90_ms": 505.66,
+   "mean_ms": 258.46,
+   "max_ms": 1288.21
+  },
+  "release": {
+   "n": 739,
+   "p50_ms": 0.11,
+   "p90_ms": 0.15,
+   "mean_ms": 0.12,
+   "max_ms": 1.15
+  },
+  "by_tokens": [
+   {
+    "tokens": "0 to 512",
+    "n": 457,
+    "p50_ms": 145.79,
+    "p90_ms": 208.37
+   },
+   {
+    "tokens": "513 to 1024",
+    "n": 154,
+    "p50_ms": 247.29,
+    "p90_ms": 397.22
+   },
+   {
+    "tokens": "1025 to 2048",
+    "n": 122,
+    "p50_ms": 507.87,
+    "p90_ms": 860.71
+   },
+   {
+    "tokens": "2049 to 4096",
+    "n": 6,
+    "p50_ms": 1166.17,
+    "p90_ms": 1257.44
+   }
+  ],
+  "short_input_tokens": 512,
+  "by_fifth_short_inputs": [
+   {
+    "fifth": 1,
+    "n": 34,
+    "p50_ms": 119.79,
+    "mean_tokens": 359,
+    "p50_ms_per_100_tokens": 35.16
+   },
+   {
+    "fifth": 2,
+    "n": 43,
+    "p50_ms": 211.18,
+    "mean_tokens": 404,
+    "p50_ms_per_100_tokens": 55.9
+   },
+   {
+    "fifth": 3,
+    "n": 96,
+    "p50_ms": 162.86,
+    "mean_tokens": 389,
+    "p50_ms_per_100_tokens": 41.09
+   },
+   {
+    "fifth": 4,
+    "n": 139,
+    "p50_ms": 139.46,
+    "mean_tokens": 351,
+    "p50_ms_per_100_tokens": 41.54
+   },
+   {
+    "fifth": 5,
+    "n": 145,
+    "p50_ms": 138.47,
+    "mean_tokens": 334,
+    "p50_ms_per_100_tokens": 45.49
+   }
+  ]
+ },
+ "memory": {
+  "footprint_after_load": 1949238952,
+  "peak_footprint_inputs": 2153105160,
+  "peak_footprint_total": 2153105160,
+  "max_resident": 1294630912,
+  "allocator_max_before_release": {
+   "allocated": 706849280,
+   "driver": 1149894656
+  }
+ },
+ "targets": [
+  {
+   "name": "median latency per call",
+   "value": "0.196 s",
+   "limit": "< 1.0 s",
+   "verdict": "met"
+  },
+  {
+   "name": "peak memory footprint over the 739 inputs",
+   "value": "2.15 GB (2053 MiB)",
+   "limit": "< 3.0 GB",
+   "verdict": "met"
+  }
+ ],
+ "reported_without_threshold": [
+  {
+   "name": "maximum-length input of 4096 tokens, latency",
+   "value": "2.011 s"
+  },
+  {
+   "name": "peak memory footprint including that input",
+   "value": "2.15 GB (2053 MiB)"
+  }
+ ],
+ "thermal_before": [
+  "Note: No thermal warning level has been recorded",
+  "Note: No performance warning level has been recorded",
+  "Note: No CPU power status has been recorded"
+ ],
+ "thermal_after": [
+  "Note: No thermal warning level has been recorded",
+  "Note: No performance warning level has been recorded",
+  "Note: No CPU power status has been recorded"
+ ],
+ "machine": {
+  "platform": "macOS-26.5-arm64-arm-64bit",
+  "python": "3.12.9",
+  "model": "Mac14,2",
+  "memory_bytes": "17179869184",
+  "chip": "Apple M2"
+ },
+ "environment": {},
+ "max_length_input": {
+  "tokens": 4096,
+  "truncated": true,
+  "exact": true,
+  "latency_ms": 2010.76
+ }
+}

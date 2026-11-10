@@ -1,0 +1,63 @@
+{
+ "rule": {
+  "shingle_words": 13,
+  "threshold": 0.5
+ },
+ "source": "lytang/LLM-AggreFact@981dfd0bd8e58e7238a9ab92b2e6ea44bce918e4:data/test-00000-of-00001.parquet",
+ "source_sha256": "ba6976c3da990a9d7b11670efaf4e3c93c1bd0530061ec742afd6b2d5bce698c",
+ "train": "ragtruth-out/train.jsonl",
+ "train_sha256": "10030e836e98758b1e5d4c1f12c0375335199e3377110ad538bb5656df06f614",
+ "train_contexts": 1468,
+ "checked_at": "2026-11-09T14:48:09+00:00",
+ "datasets": {
+  "WiCE": {
+   "documents": 355,
+   "instances": 358,
+   "documents_too_short_to_assess": 0,
+   "documents_sharing_a_shingle": 0,
+   "documents_overlapping": 0,
+   "instances_overlapping": 0,
+   "max_containment": 0.0
+  },
+  "REVEAL": {
+   "documents": 1498,
+   "instances": 1710,
+   "documents_too_short_to_assess": 9,
+   "documents_sharing_a_shingle": 0,
+   "documents_overlapping": 0,
+   "instances_overlapping": 0,
+   "max_containment": 0.0
+  },
+  "ClaimVerify": {
+   "documents": 697,
+   "instances": 1088,
+   "documents_too_short_to_assess": 4,
+   "documents_sharing_a_shingle": 0,
+   "documents_overlapping": 0,
+   "instances_overlapping": 0,
+   "max_containment": 0.0
+  },
+  "FactCheck-GPT": {
+   "documents": 1199,
+   "instances": 1566,
+   "documents_too_short_to_assess": 7,
+   "documents_sharing_a_shingle": 0,
+   "documents_overlapping": 0,
+   "instances_overlapping": 0,
+   "max_containment": 0.0
+  },
+  "ExpertQA": {
+   "documents": 3135,
+   "instances": 3702,
+   "documents_too_short_to_assess": 3,
+   "documents_sharing_a_shingle": 2,
+   "documents_overlapping": 0,
+   "instances_overlapping": 0,
+   "max_containment": 0.0019
+  }
+ },
+ "containment": {
+  "expertqa-9e0399d434f6943c": 0.0019,
+  "expertqa-b4ee22ac9a7d20b7": 0.0009
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "source": "LLM-AggreFact leaderboard, https://llm-aggrefact.github.io/, read on 2026-11-09",
+ "metric": "balanced accuracy on the test split, in points, one decimal as published",
+ "threshold_rule": "No threshold is tuned. The leaderboard states that systems are benchmarked in a zero-shot fashion (https://llm-aggrefact.github.io/blog). The benchmark's paper (Tang, Laban and Durrett, MiniCheck, EMNLP 2024, section 4.1) sets the threshold at the midpoint of the output score range, 0.5 for most fact-checkers, and the official evaluation notebook (benchmark_evaluation_demo.ipynb of github.com/Liyan06/MiniCheck) converts the raw probability into a label with the threshold 0.5.",
+ "not_documented": "How each entry was run: the leaderboard does not say how HHEM-2.1-open handled its longest inputs, nor whether a score equal to 0.5 counts as supported.",
+ "judges": {
+  "hhem": {
+   "name": "HHEM-2.1-open",
+   "WiCE": 75.9,
+   "REVEAL": 86.6,
+   "ClaimVerify": 73.9,
+   "FactCheck-GPT": 71.8,
+   "ExpertQA": 58.4
+  },
+  "minicheck": {
+   "name": "MiniCheck-Flan-T5-L",
+   "WiCE": 72.2,
+   "REVEAL": 86.2,
+   "ClaimVerify": 74.6,
+   "FactCheck-GPT": 74.7,
+   "ExpertQA": 59.0
+  }
+ }
+}
