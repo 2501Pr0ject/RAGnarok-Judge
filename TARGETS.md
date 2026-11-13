@@ -1451,3 +1451,67 @@ After the freeze:
    the five out-of-domain datasets; publication of the results whatever the
    outcome, with the number of configurations and checkpoints evaluated on
    dev (section 12).
+
+## Amendments after the freeze
+
+### Amendment 1, written 2026-11-10, committed 2026-11-13
+
+Written after the tag `protocol-v1` and before any training run, committed with the training
+plan (`TRAINING.md`, tag `training-plan-v1`). No model has been trained, and no dev or test
+value of a trained RJ is known: the feasibility and timing measurements of 2026-11-10 ran
+LoRA updates on training examples, for 40 minutes at most, and every adapter they produced
+was deleted without being scored on dev or test. The sections above are unchanged.
+
+**(a) Tie-break between the candidate bases (sections 3, 8, 12 and 14).** Section 12 gives
+one criterion for the choice between the bases and no rule for a small gap. This rule is
+added:
+
+- The best dev checkpoint of each base is taken, by the criterion of section 12.
+- The standard error of the difference of their criteria is estimated on the dev set by a
+  paired bootstrap grouped by source (`source_id`): 10000 resamples, seed 7, the same
+  resamples for both models, the criterion recomputed for each model in every resample; the
+  standard error is the standard deviation of the 10000 differences.
+- If the absolute difference of the two criteria is smaller than that standard error,
+  Pleias-RAG-350M, the less costly base, is retained.
+- Otherwise the base with the higher criterion is retained.
+
+Why Pleias-RAG-350M is the less costly base:
+
+- Memory, section 8: on MLX in bfloat16 its peak footprint over the 739 sentences is
+  1.57 GB, against 2.15 GB for Qwen3-0.6B. Section 8 states that these memory figures do not
+  depend on the order of the runs.
+- Latency, section 8: its median is 0.144 s against 0.294 s, its p90 0.369 s against
+  0.708 s, and the 4096-token input takes 1.62 s against 3.42 s. Section 8 also states that
+  these latencies, measured in chained runs and not from a cold start, are not valid for
+  comparing the bases with each other. They are therefore not the ground of this rule on
+  their own.
+- Latency, measured since: on 2026-11-10, on the training machine in the same thermal state
+  ("fair") for both, one scoring pass over the same kind of sample, 500 dev sentences with
+  the pretrained weights, one sentence per call, took 132 s for Pleias-RAG-350M and 221 s
+  for Qwen3-0.6B (136 s and 210 s in a first measurement the same day), and a training step
+  took 1.6 to 1.8 s per 1000 tokens against 2.6 s. No score of these passes was kept and no
+  metric was computed.
+- Size: its weights take 0.71 GB against 1.50 GB.
+
+The asymmetry is declared and intended. The training plan (`TRAINING.md`) gives
+Pleias-RAG-350M two learning rates and 8 checkpoints evaluated on dev, against one learning
+rate, the better of the two on Pleias-RAG-350M, and 4 checkpoints for Qwen3-0.6B: the best
+of 8 is favoured over the best of 4, and the tie-break goes to Pleias-RAG-350M as well. Both
+lean the same way on purpose: at a performance that the dev set cannot tell apart, the less
+costly base is preferred, and Qwen3-0.6B is retained only if it is ahead by at least one
+standard error.
+
+The difference, its standard error and the base retained are reported with the results. The
+rule concerns the choice between the two bases only; checkpoints and hyperparameters within a
+base are still selected on the highest criterion.
+
+**(b) Erratum, input lengths of Pleias-RAG-350M (section 3, Judge input).** The table of
+input lengths gives the medians 561 (dev) and 543 (train) for Pleias-RAG-350M. Counted on
+the complete rendered input, they are 558 and 540. The figures of the table came from the
+script `prompt_templates.py lengths`, whose median adds up token counts of the template, the
+context and the sentence taken separately, three tokens above the exact count for this
+tokenizer. The medians of Qwen3-0.6B (547 and 529), the longest inputs of both bases and
+the counts beyond L are exact and unchanged. The test median of Pleias-RAG-350M (543) comes
+from the same script and is not recounted, the test set not being read before the final
+evaluation. The same figures appear in `TEMPLATES.md`. This has no effect on any decision:
+no input comes near L, and no rule uses a median.
