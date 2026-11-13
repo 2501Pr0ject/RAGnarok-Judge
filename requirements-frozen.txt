@@ -14,3 +14,6 @@ ragnarok-ai==1.13.0
 # MLX environment: cost of the candidate bases on MLX (a separate virtual environment).
 mlx==0.32.4
 mlx-lm==0.32.2
+#
+# Test tool of the MLX environment (training/COMMANDS.md); not used by any measurement.
+pytest==9.2.0

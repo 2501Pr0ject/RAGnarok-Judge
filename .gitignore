@@ -1,4 +1,5 @@
-# Data folders: converted RAGTruth splits, LLM-AggreFact conversion, judge runs, cost runs.
+# Data folders: converted RAGTruth splits, LLM-AggreFact conversion, judge runs, cost runs,
+# training runs (adapters, optimiser states, logs, per-sentence dev scores).
 # None of them is ever committed; only the aggregates copied into results/ are.
 /ragtruth-out/
 /ood-out/
@@ -6,6 +7,7 @@
 /bench/
 /bench-1.13/
 /cost/runs/
+/training-runs/
 /RAGTruth/
 /audit-multi/
 *.jsonl

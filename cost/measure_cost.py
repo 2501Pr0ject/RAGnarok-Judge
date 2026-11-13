@@ -18,6 +18,13 @@ forward pass does not depend on the values of the weights. The score is read at 
 position only, over two label tokens, which is how the trained judge is expected to work. The
 score itself means nothing here and is not written to the run files.
 
+The trained judge (``--adapter``, with ``mlx:<repo>`` and ``--revision``): the base in bfloat16
+at its pinned revision, carrying the separate LoRA adapters of a checkpoint folder written by
+``training/train.py``, not merged. The prompt is then the declared template of the base
+(``analysis/prompt_templates.py``) and the score is read over the first tokens of the three
+labels, as in training and on dev. The regime of the measurement is unchanged: one sentence
+per call, cache released after each call. No score is written to the run files either.
+
 Outputs in ``--out``: ``calls.jsonl`` (one row per call: identifier, length, timings, bytes;
 never any text from the data), ``summary.json`` and ``summary.md``.
 
@@ -224,6 +231,40 @@ class PromptBuilder:
         return len(self.encode(self.render("", "")))
 
 
+class DeclaredBuilder:
+    """The declared template of a base and its three labels (``analysis/prompt_templates.py``).
+
+    Same interface as ``PromptBuilder``. Used for the trained judge.
+    """
+
+    def __init__(self, base: str, tokenizer: Any, max_length: int) -> None:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "analysis"))
+        import prompt_templates
+
+        self.pt = prompt_templates
+        self.base = base
+        self.tokenizer = tokenizer
+        self.max_length = max_length
+        self.template = f"declared ({base})"
+
+    def render(self, context: str, sentence: str) -> str:
+        return str(self.pt.render(self.base, self.tokenizer, context, sentence))
+
+    def encode(self, text: str) -> list[int]:
+        return list(self.pt.encode(self.tokenizer, text))
+
+    def build(self, context: str, sentence: str) -> tuple[list[int], bool]:
+        ids, truncated = self.pt.build_input(self.base, self.tokenizer, context, sentence, self.max_length)
+        return list(ids), bool(truncated)
+
+    def label_ids(self) -> list[int]:
+        first = self.pt.label_first_tokens(self.base, self.tokenizer)
+        return [first[label]["first_id"] for label in self.pt.LABELS]
+
+    def overhead(self) -> int:
+        return len(self.encode(self.render("", "")))
+
+
 def max_length_record(records: list[dict[str, Any]], builder: PromptBuilder) -> dict[str, Any]:
     """A record whose input fills the maximum length: contexts of the data, longest first, joined.
 
@@ -406,15 +447,22 @@ class MlxBase:
 
     Weights published in another precision are converted to bfloat16 after loading, and the
     conversion is recorded in the description of the judge.
+
+    With ``adapter``, a checkpoint folder of ``training/train.py``, the model carries the LoRA
+    adapters of that checkpoint, kept separate, and the prompt is the declared template of the
+    base with its three labels: the trained judge in its configuration of use.
     """
 
-    def __init__(self, repo: str, revision: str | None, template: str, max_length: int) -> None:
+    def __init__(
+        self, repo: str, revision: str | None, template: str, max_length: int, adapter: Path | None = None
+    ) -> None:
         import mlx.core as mx
         import mlx_lm
         from mlx.utils import tree_flatten
         from transformers import AutoTokenizer
 
         self.mx = mx
+        state = self._adapter_state(adapter, repo, revision) if adapter is not None else None
         kwargs = {"revision": revision} if revision else {}
         self.model, _ = mlx_lm.load(repo, **kwargs)
         self.model.eval()
@@ -427,7 +475,11 @@ class MlxBase:
             self.model.set_dtype(mx.bfloat16)
             mx.eval(self.model.parameters())
         self.dtypes = sorted({str(value.dtype) for _, value in tree_flatten(self.model.parameters())})
-        self.builder = PromptBuilder(tokenizer, template, max_length)
+        self.builder: Any = PromptBuilder(tokenizer, template, max_length)
+        self.adapter: dict[str, Any] | None = None
+        if adapter is not None and state is not None:
+            self.adapter = self._add_adapter(adapter, state)
+            self.builder = DeclaredBuilder(self.adapter["base"], tokenizer, max_length)
         self.labels = mx.array(self.builder.label_ids())
         self.repo, self.revision = repo, revision
         self.versions = {"mlx": getattr(mx, "__version__", "?"), "mlx_lm": getattr(mlx_lm, "__version__", "?")}
@@ -435,7 +487,51 @@ class MlxBase:
         self.project = self.model.lm_head if hasattr(self.model, "lm_head") else body.embed_tokens.as_linear
         self.body = body
 
+    @staticmethod
+    def _adapter_state(folder: Path, repo: str, revision: str | None) -> dict[str, Any]:
+        """State of the checkpoint, after checking that the base named is the pinned one it was trained on."""
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "analysis"))
+        import prompt_templates
+
+        state: dict[str, Any] = json.loads((folder / "state.json").read_text(encoding="utf-8"))
+        base = state["config"]["base"]
+        pinned = prompt_templates.BASES.get(base)
+        if pinned is None or (repo, revision) != (pinned["repo"], pinned["revision"]):
+            msg = f"{folder}: adapters trained on {base}; --judge and --revision must name its pinned base, {pinned}"
+            raise SystemExit(msg)
+        return state
+
+    def _add_adapter(self, folder: Path, state: dict[str, Any]) -> dict[str, Any]:
+        """Adds LoRA as in training and loads the adapter weights of ``folder``, kept separate."""
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "training"))
+        import judge as training_judge
+
+        base = state["config"]["base"]
+        if self.converted:
+            raise SystemExit("adapters are measured on a base published in bfloat16 only")
+        training_judge.add_lora(self.model, state["config"]["seed"])
+        tensors = training_judge.load_adapters(self.model, folder)
+        self.model.eval()
+        return {
+            "base": base,
+            "folder": folder.name,
+            "update": state["updates_done"],
+            "tensors": tensors,
+            "rank": training_judge.LORA_RANK,
+            "scale": training_judge.LORA_SCALE,
+        }
+
     def describe(self) -> dict[str, Any]:
+        adapter = {}
+        if self.adapter is not None:
+            adapter = {
+                "adapters": "separate, not merged",
+                "adapter_folder": self.adapter["folder"],
+                "adapter_update": self.adapter["update"],
+                "adapter_rank": self.adapter["rank"],
+                "adapter_scale": self.adapter["scale"],
+                "labels": len(self.builder.label_ids()),
+            }
         return {
             "stack": "mlx",
             "model": self.repo,
@@ -448,6 +544,7 @@ class MlxBase:
             "max_length": self.builder.max_length,
             "template": self.builder.template,
             "template_tokens": self.builder.overhead(),
+            **adapter,
             **self.versions,
         }
 
@@ -473,6 +570,8 @@ class MlxBase:
 
 def build_judge(args: argparse.Namespace) -> Any:
     kind, _, rest = args.judge.partition(":")
+    if args.adapter is not None and kind != "mlx":
+        raise SystemExit("--adapter goes with --judge mlx:<repo> and --revision")
     if kind == "fake":
         return FakeJudge()
     if kind in ("hhem", "minicheck") and not rest:
@@ -480,7 +579,7 @@ def build_judge(args: argparse.Namespace) -> Any:
     if kind == "hf" and rest:
         return TorchBase(rest, args.revision, args.device, args.dtype, args.template, args.max_length)
     if kind == "mlx" and rest:
-        return MlxBase(rest, args.revision, args.template, args.max_length)
+        return MlxBase(rest, args.revision, args.template, args.max_length, args.adapter)
     msg = f"--judge must be hhem, minicheck, hf:<repo>, mlx:<repo> or fake, got {args.judge!r}"
     raise SystemExit(msg)
 
@@ -696,6 +795,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--device", default="mps", help="torch device for hhem, minicheck and hf (default mps)")
     parser.add_argument("--dtype", default="float16", help="torch dtype for hf (default float16)")
     parser.add_argument("--revision", help="model revision for hf and mlx")
+    parser.add_argument(
+        "--adapter",
+        type=Path,
+        help="checkpoint folder of training/train.py: the trained judge, adapters kept separate (mlx only)",
+    )
     parser.add_argument("--template", default="auto", help="auto, chat, pleias or plain (hf and mlx)")
     parser.add_argument("--max-length", type=int, default=4096, help="maximum input length in tokens (hf and mlx)")
     parser.add_argument(
