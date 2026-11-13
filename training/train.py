@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import re
 import shutil
 import subprocess
@@ -74,12 +75,20 @@ def learning_rate(update: int, peak: float, total: int, warmup: int) -> float:
     return peak * 0.5 * (1 + math.cos(math.pi * (update - warmup) / (total - warmup)))
 
 
+def parse_swap_used(text: str) -> float | None:
+    """Swap in use, in MB, from the output of ``sysctl -n vm.swapusage``; decimal point or comma."""
+    match = re.search(r"used = (\d+(?:[.,]\d+)?)M", text)
+    return None if match is None else float(match.group(1).replace(",", "."))
+
+
 def swap_used_mb() -> float | None:
+    """Swap in use, in MB. ``sysctl`` runs under the C locale, whatever the locale of the shell."""
     try:
-        out = subprocess.run(["sysctl", "-n", "vm.swapusage"], capture_output=True, text=True, check=False).stdout
-        return float(re.search(r"used = ([\d.]+)M", out).group(1))  # type: ignore[union-attr]
-    except (OSError, AttributeError, ValueError):
+        out = subprocess.run(["sysctl", "-n", "vm.swapusage"], capture_output=True, text=True, check=False,
+                             env={**os.environ, "LC_ALL": "C"}).stdout
+    except OSError:
         return None
+    return parse_swap_used(out)
 
 
 # ----------------------------------------------------------------------------- states

@@ -298,3 +298,22 @@ Before run 1, one pilot checks the code on the real base, not the model.
 - Its weights are deleted. Run 1 starts again from the pretrained base.
 - If the pilot shows a defect, the correction is declared with the results before run 1
   starts; a change of a setting of sections 1 to 4 would be declared the same way.
+
+## Pilot, 2026-11-13
+
+Note added after the pilot of section 10, before run 1. The sections above are unchanged.
+
+- Defect found: the swap rule of section 7 was inactive under a French locale. `sysctl`
+  then writes the swap in use with a decimal comma (`used = 0,00M`), which the reading in
+  `training/train.py` did not accept: it returned None without any message, and the run went
+  on with no swap check. The pilot itself was run with `LC_NUMERIC=C` in front of the
+  command, so the rule was active during it; no swap was used.
+- Correction: `sysctl` is called under the C locale, whatever the locale of the shell, and
+  the reading accepts a decimal point or a decimal comma. Two tests cover it: one on both
+  formats, one that fails if the reading returns None on the training machine under a French
+  locale. The correction is committed with this note, before run 1.
+- The pilot was interrupted after update 210 instead of 150: the first resume state is
+  written at update 200 (section 8), so an interruption at 150 would have left no state to
+  resume from. It resumed from update 200.
+- `/usr/bin/time -l` was added to the pilot command to measure the peak memory footprint;
+  it has no effect on training.
