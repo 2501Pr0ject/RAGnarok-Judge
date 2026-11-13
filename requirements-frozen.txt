@@ -15,5 +15,8 @@ ragnarok-ai==1.13.0
 mlx==0.32.4
 mlx-lm==0.32.2
 #
-# Test tool of the MLX environment (training/COMMANDS.md); not used by any measurement.
+# Test tool of the MLX environment and its dependencies (training/COMMANDS.md); not used by
+# any measurement.
+iniconfig==2.3.1
+pluggy==1.7.0
 pytest==9.2.0

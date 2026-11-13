@@ -95,6 +95,29 @@ caffeinate -i /usr/bin/time -l python cost/measure_cost.py --judge hhem --device
 caffeinate -i /usr/bin/time -l python cost/measure_cost.py --judge minicheck --device mps --data ragtruth-out/test.jsonl --ids-from bench-1.13/quota/hhem-mps/attempts.jsonl --compare-scores bench-1.13/quota/minicheck/attempts.jsonl --out cost/runs/minicheck-mps-739
 ```
 
+## The trained judge, after selection
+
+Section 8 of `TARGETS.md`: the judge retained is measured again in the same regime, on the
+same 739 sentences, from a cold start, before its evaluation on the test set, in its
+configuration of use. That configuration is the base in bfloat16 at its pinned revision with
+the adapters of the selected checkpoint, kept separate and not merged (section 6 of
+`TRAINING.md`). `--adapter` names the checkpoint folder written by `training/train.py`; the
+script then uses the declared template of the base and its three labels, and writes no score.
+For Pleias-RAG-350M, with `CKPT` the folder of the selected checkpoint:
+
+```bash
+caffeinate -i /usr/bin/time -l python-mlx cost/measure_cost.py --judge mlx:PleIAs/Pleias-RAG-350M --revision db001b29a33532583d14979c3c38ef04b6d59352 --adapter training-runs/CKPT --max-length 4096 --add-max-length-input --data ragtruth-out/test.jsonl --ids-from bench-1.13/quota/hhem-mps/attempts.jsonl --out cost/runs/rj-pleias-adapter-mlx-739
+```
+
+For Qwen3-0.6B:
+
+```bash
+caffeinate -i /usr/bin/time -l python-mlx cost/measure_cost.py --judge mlx:Qwen/Qwen3-0.6B --revision c1899de289a04d12100db370d81485cdf75e47ca --adapter training-runs/CKPT --max-length 4096 --add-max-length-input --data ragtruth-out/test.jsonl --ids-from bench-1.13/quota/hhem-mps/attempts.jsonl --out cost/runs/rj-qwen3-adapter-mlx-739
+```
+
+The script refuses a checkpoint trained on another base or revision. The training, the
+selection and the other commands around this one are in `training/COMMANDS.md`.
+
 ## What the script assumes
 
 - Candidate bases: one forward pass per sentence, score read at the last position.
@@ -109,6 +132,8 @@ caffeinate -i /usr/bin/time -l python cost/measure_cost.py --judge minicheck --d
   declared templates of `TEMPLATES.md` are longer by about 41 and 62 tokens.
 - Pretrained weights, not trained for the task: the score returned has no meaning and is not
   written to the files of the run.
+- With `--adapter`: the declared templates of `TEMPLATES.md` and the three labels, as in
+  training; the scores are not written either, the inputs coming from the test set.
 
 ## What was run
 

@@ -8,16 +8,20 @@ models are read from the local cache, hence `HF_HUB_OFFLINE=1`. The test set is 
 
 ## Tests
 
-pytest 9.2.0 is the test tool of the MLX environment:
+The test commands name their paths explicitly, for the local layout where the data folders
+and the MLX environment sit in `../ragnarok-judge-ref`, next to the repository; they are run
+from the root of the repository, with no link to create.
+
+pytest 9.2.0, with iniconfig 2.3.1 and pluggy 1.7.0, is the test tool of the MLX environment:
 
 ```bash
-uv pip install --python .venv-mlx/bin/python pytest==9.2.0
+uv pip install --python ../ragnarok-judge-ref/.venv-mlx/bin/python pytest==9.2.0 iniconfig==2.3.1 pluggy==1.7.0
 ```
 
 All the tests of `training/`:
 
 ```bash
-RJ_BASES=1 RJ_DEV=ragtruth-out/dev.jsonl RJ_RUN_HHEM=bench-1.13/full/hhem RJ_RUN_MINICHECK=bench-1.13/full/minicheck HF_HUB_OFFLINE=1 python-mlx -m pytest training -q
+RJ_BASES=1 RJ_DEV=../ragnarok-judge-ref/ragtruth-out/dev.jsonl RJ_RUN_HHEM=../ragnarok-judge-ref/bench-1.13/full/hhem RJ_RUN_MINICHECK=../ragnarok-judge-ref/bench-1.13/full/minicheck HF_HUB_OFFLINE=1 ../ragnarok-judge-ref/.venv-mlx/bin/python -m pytest training -q
 ```
 
 - `RJ_BASES=1` adds the tests that load the two pretrained bases from the local cache.
