@@ -232,3 +232,24 @@ def test_a_pilot_writes_no_checkpoint(tmp_path: Path) -> None:
     _, seen, result = launch(tmp_path / "pilot", stop_after=20)
     assert result["status"] == "stopped after 20 updates" and len(seen) == 40
     assert not list((tmp_path / "pilot").glob("checkpoint-*")) and (tmp_path / "pilot" / "resume").is_dir()
+
+
+# ----------------------------------------------------------------------------- swap rule
+
+
+@pytest.mark.parametrize(("text", "used"), [
+    ("total = 2048,00M  used = 0,00M  free = 2048,00M  (encrypted)", 0.0),
+    ("total = 2048.00M  used = 0.00M  free = 2048.00M  (encrypted)", 0.0),
+    ("total = 3072,00M  used = 1536,25M  free = 1535,75M  (encrypted)", 1536.25),
+    ("total = 3072.00M  used = 1536.25M  free = 1535.75M  (encrypted)", 1536.25),
+])
+def test_swap_reading_accepts_a_decimal_point_or_comma(text: str, used: float) -> None:
+    assert train.parse_swap_used(text) == used
+
+
+@pytest.mark.skipif(os.uname().sysname != "Darwin", reason="vm.swapusage is read with the sysctl of macOS")
+def test_swap_is_read_on_this_machine_under_a_french_locale(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("LANG", "fr_FR.UTF-8")
+    monkeypatch.setenv("LC_ALL", "fr_FR.UTF-8")
+    used = train.swap_used_mb()
+    assert used is not None and used >= 0
