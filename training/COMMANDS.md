@@ -91,6 +91,36 @@ For Qwen3-0.6B: `--judge mlx:Qwen/Qwen3-0.6B --revision c1899de289a04d12100db370
 and its checkpoint. The run reads the inputs of the 739 sentences to time them and writes no
 score.
 
+## Scoring of the retained judge (section 6 of `TRAINING.md`)
+
+The judge retained, Qwen3-0.6B with the separate adapters of `qwen3-lr3e-4/checkpoint-3462`,
+is scored through `ragnarok judge-bench` like the baselines, with `training/rj_judge.py`. It
+runs in the PyTorch environment (`python-bench` and `ragnarok` below stand for its interpreter
+and its harness command), which holds `ragnarok-ai` and, since
+2026-11-14, MLX at the versions of the MLX environment (`requirements-frozen.txt`). The
+adapters are refused unless their SHA-256 is the one fixed in `rj_judge.py`.
+
+The tests of `training/test_rj_judge.py` that need `ragnarok-ai` are skipped by the command of
+the Tests section; they run in the PyTorch environment, with pytest supplied for the run only,
+nothing installed in it:
+
+```bash
+cd training && HF_HUB_OFFLINE=1 uv run --offline --no-project --python ../../ragnarok-judge-ref/.venv-bench/bin/python --with pytest==9.2.0 --with iniconfig==2.3.1 --with pluggy==1.7.0 python -m pytest test_rj_judge.py -q -p no:cacheprovider
+```
+
+The dev scores are not produced again: those of the run are written as the
+`dev_attempts.jsonl` of the judge's run folder, with the configuration hash of the plugin:
+
+```bash
+HF_HUB_OFFLINE=1 python-bench training/dev_attempts.py --dev ragtruth-out/dev.jsonl --checkpoint training-runs/qwen3-lr3e-4/checkpoint-3462 --out bench-1.13/full/rj-qwen3/dev_attempts.jsonl
+```
+
+The harness command, for a data file `DATA` and a run folder `OUT`, without `--dev`:
+
+```bash
+PYTHONPATH=training RJ_ADAPTERS=training-runs/qwen3-lr3e-4/checkpoint-3462 HF_HUB_OFFLINE=1 caffeinate -i ragnarok judge-bench --judge python:rj_judge:RJQwen3 --data DATA --out OUT
+```
+
 ## Merged convenience version (section 9 of `TRAINING.md`)
 
 Never evaluated. Its drift from the judge with separate adapters is measured on 50 training
