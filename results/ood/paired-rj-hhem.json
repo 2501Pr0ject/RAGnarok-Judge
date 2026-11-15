@@ -1,0 +1,229 @@
+{
+ "data": "../ragnarok-judge-ref/ood-out/llm-aggrefact-5.jsonl",
+ "data_sha256": "b01fe54c21845d3f0fe529be2e2829f249e9454402553a6223bc8737db6793e4",
+ "run_a": {
+  "path": "../ragnarok-judge-ref/ood-runs/rj-qwen3",
+  "name": "RJ",
+  "config_hash": "b2d8fe21e651d30a5aff2ba6d30d81605df50b3fae4da1c03256b31fd5da43a8"
+ },
+ "run_b": {
+  "path": "../ragnarok-judge-ref/ood-runs/hhem-l4096-mps",
+  "name": "HHEM",
+  "config_hash": "cfd9eb00c7c54380f23057a2635e49d33a5f6359c6caff4388d5ffcb5cae9adf"
+ },
+ "truncation_runs": [
+  "../ragnarok-judge-ref/ood-runs/rj-qwen3",
+  "../ragnarok-judge-ref/ood-runs/hhem-l4096-mps"
+ ],
+ "resamples": 10000,
+ "seed": 7,
+ "margin": 0.02,
+ "all": {
+  "n": 8424,
+  "datasets": {
+   "WiCE": {
+    "auc_a": 0.8795273005799321,
+    "auc_b": 0.8321844111317795,
+    "difference": {
+     "value": 0.04734288944815257,
+     "standard_error": 0.01882073180693867,
+     "low": 0.010948046840685953,
+     "high": 0.08462725068472626,
+     "excluded": 0
+    },
+    "correlation": 0.5848053454635266
+   },
+   "REVEAL": {
+    "auc_a": 0.949986641221374,
+    "auc_b": 0.9383692748091603,
+    "difference": {
+     "value": 0.01161736641221367,
+     "standard_error": 0.005105336291400577,
+     "low": 0.0018610756644454219,
+     "high": 0.02185576261929697,
+     "excluded": 0
+    },
+    "correlation": 0.6112456288079177
+   },
+   "ClaimVerify": {
+    "auc_a": 0.828653602417861,
+    "auc_b": 0.8262204814527513,
+    "difference": {
+     "value": 0.002433120965109725,
+     "standard_error": 0.0121838797903561,
+     "low": -0.020974196269196797,
+     "high": 0.026854929740818382,
+     "excluded": 0
+    },
+    "correlation": 0.6894358361446774
+   },
+   "FactCheck-GPT": {
+    "auc_a": 0.8501083944215985,
+    "auc_b": 0.8048978634006794,
+    "difference": {
+     "value": 0.0452105310209191,
+     "standard_error": 0.010288923187903325,
+     "low": 0.025407881410641407,
+     "high": 0.0653985566126422,
+     "excluded": 0
+    },
+    "correlation": 0.6602563577382081
+   },
+   "ExpertQA": {
+    "auc_a": 0.6139858117755724,
+    "auc_b": 0.5981388257948127,
+    "difference": {
+     "value": 0.01584698598075973,
+     "standard_error": 0.007129797257731642,
+     "low": 0.0016600259645621063,
+     "high": 0.029677482786454587,
+     "excluded": 0
+    },
+    "correlation": 0.8314523908017334
+   }
+  },
+  "mean": {
+   "auc_a": {
+    "value": 0.8244523500832676,
+    "standard_error": 0.0057656043293357,
+    "low": 0.8129264206683117,
+    "high": 0.8354871743244119,
+    "excluded": 0
+   },
+   "auc_b": {
+    "value": 0.7999621713178366,
+    "standard_error": 0.0066591790163247205,
+    "low": 0.7868275263575052,
+    "high": 0.8128192136576126,
+    "excluded": 0
+   },
+   "difference": {
+    "value": 0.024490178765430914,
+    "standard_error": 0.0053123496253896585,
+    "low": 0.01416726302753856,
+    "high": 0.035126389433058805,
+    "excluded": 0
+   },
+   "correlation": 0.6428810993895678,
+   "standard_error_if_independent": 0.008808340278049777,
+   "test": {
+    "null": "Delta <= -0.02",
+    "alpha": 0.025,
+    "p_value": 9.999000099990002e-05,
+    "rejected": true,
+    "observed_delta_to_reject": -0.009587986060951426,
+    "power_by_true_delta": {
+     "-0.02": 0.025000000000000064,
+     "-0.01": 0.46908992174757597,
+     "+0.00": 0.9644508009001241,
+     "+0.01": 0.9998866567760625,
+     "+0.02": 0.9999999872382213
+    }
+   }
+  }
+ },
+ "untruncated": {
+  "n": 8114,
+  "datasets": {
+   "WiCE": {
+    "auc_a": 0.8855142270983856,
+    "auc_b": 0.8429221300508429,
+    "difference": {
+     "value": 0.04259209704754263,
+     "standard_error": 0.018727915211785944,
+     "low": 0.006004519915700926,
+     "high": 0.07944610777520919,
+     "excluded": 0
+    },
+    "correlation": 0.5900287235981817
+   },
+   "REVEAL": {
+    "auc_a": 0.949986641221374,
+    "auc_b": 0.9383692748091603,
+    "difference": {
+     "value": 0.01161736641221367,
+     "standard_error": 0.005172927139570229,
+     "low": 0.001610434036721442,
+     "high": 0.021904349062975413,
+     "excluded": 0
+    },
+    "correlation": 0.5926881347123123
+   },
+   "ClaimVerify": {
+    "auc_a": 0.8309482857470474,
+    "auc_b": 0.8371689026487789,
+    "difference": {
+     "value": -0.006220616901731479,
+     "standard_error": 0.013153265630798138,
+     "low": -0.031149012315630668,
+     "high": 0.0202321499135566,
+     "excluded": 0
+    },
+    "correlation": 0.6702808865781843
+   },
+   "FactCheck-GPT": {
+    "auc_a": 0.8501083944215985,
+    "auc_b": 0.8048978634006794,
+    "difference": {
+     "value": 0.0452105310209191,
+     "standard_error": 0.010326268468401713,
+     "low": 0.025056264215215972,
+     "high": 0.06608293576823632,
+     "excluded": 0
+    },
+    "correlation": 0.6607688111952902
+   },
+   "ExpertQA": {
+    "auc_a": 0.6136683084758812,
+    "auc_b": 0.5994035692076872,
+    "difference": {
+     "value": 0.014264739268193938,
+     "standard_error": 0.007156879524041894,
+     "low": 0.000317370900487713,
+     "high": 0.0283374486935352,
+     "excluded": 0
+    },
+    "correlation": 0.8391199032362924
+   }
+  },
+  "mean": {
+   "auc_a": {
+    "value": 0.8260451713928573,
+    "standard_error": 0.00596760611940235,
+    "low": 0.8141646958971169,
+    "high": 0.8374628697498334,
+    "excluded": 0
+   },
+   "auc_b": {
+    "value": 0.8045523480234298,
+    "standard_error": 0.006825957300205983,
+    "low": 0.7909596261430919,
+    "high": 0.8177760316993525,
+    "excluded": 0
+   },
+   "difference": {
+    "value": 0.021492823369427483,
+    "standard_error": 0.005354677810277554,
+    "low": 0.010938008813056479,
+    "high": 0.031833234361634724,
+    "excluded": 0
+   },
+   "correlation": 0.6570999732151955,
+   "standard_error_if_independent": 0.009066753325229694,
+   "test": {
+    "null": "Delta <= -0.02",
+    "alpha": 0.025,
+    "p_value": 9.999000099990002e-05,
+    "rejected": true,
+    "observed_delta_to_reject": -0.0095050243430402,
+    "power_by_true_delta": {
+     "-0.02": 0.025000000000000064,
+     "-0.01": 0.4631750282560374,
+     "+0.00": 0.9620583212457449,
+     "+0.01": 0.9998650583035869,
+     "+0.02": 0.9999999820725788
+    }
+   }
+  }
+ }
+}

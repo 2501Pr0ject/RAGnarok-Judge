@@ -1,13 +1,14 @@
 # RAGnarok Judge
 
-Status: protocol frozen on 2026-11-10 (tag `protocol-v1`). No model has been trained or
-published yet.
+Status: protocol frozen on 2026-11-10 (tag `protocol-v1`); judge trained and selected (tag
+`selection-v1`) and evaluated once on 2026-11-15, results in `results/RESULTS.md`. The model is
+not published yet.
 
 RAGnarok Judge is a sentence-level faithfulness judge for the answers of retrieval-augmented
 systems: given a context and one sentence of an answer, it returns a score in [0, 1] that the
-sentence is supported by the context. It will be trained on the RAGTruth training split and
-will be compared with HHEM-2.1-open and MiniCheck-Flan-T5-Large, on the RAGTruth test split
-and, out of domain, on five datasets of LLM-AggreFact.
+sentence is supported by the context. It is trained on the RAGTruth training split and
+compared with HHEM-2.1-open and MiniCheck-Flan-T5-Large, on the RAGTruth test split and, out
+of domain, on five datasets of LLM-AggreFact.
 
 ## Targets in brief
 
@@ -48,10 +49,12 @@ abbreviation used for the judge in the protocol file.
   define the meta sentences and the abstentions; `prompt_templates.py`, the reference
   implementation of the templates.
 - `ood/`: the out-of-domain scripts (overlap check, conversion, the two judge wrappers, the
-  measurement, the metrics and the paired difference), the published figures used for the
+  measurement, the metrics, the paired difference and the metrics by band of document length), the published figures used for the
   pipeline check, and the commands run.
 - `cost/`: the cost measurement script and the commands run.
-- `results/`: the aggregates of every run recorded in `TARGETS.md`: conversion report and
+- `results/`: `RESULTS.md`, the results of the evaluation of the retained judge; the
+  aggregates of training and selection (`results/training/`); the aggregates of every run
+  recorded in `TARGETS.md`: conversion report and
   manifests, harness reports, metrics, paired differences, the measurement of the MiniCheck
   wrapper, cost summaries, and the analysis of the two baselines on the RAGTruth test set.
   No text, label or score of a sentence appears in them.
@@ -127,7 +130,24 @@ without any text from the datasets. Only metrics are published.
 
 ## Results
 
-Results will be published whatever the outcome, with any re-evaluation disclosed. None yet.
+The retained judge, Qwen3-0.6B with separate LoRA adapters, was selected on dev among 3
+configurations and 12 checkpoints and evaluated once, on 2026-11-15. Full results, with every
+secondary measure and the differences to MiniCheck: `results/RESULTS.md`.
+
+- **Claim allowed** (section 5 of `TARGETS.md`): "no demonstrated gain on contradictions; RJ is
+  not worse than HHEM on unsupported sentences".
+- **P1, contradictions: not met.** Recall at a specificity of 0.96, RJ 0.230 against HHEM 0.158;
+  Delta_C = +0.072 [-0.006, +0.170], p = 0.039, above its Holm level of 0.025.
+- **P2, unsupported sentences: met.** RJ 0.695 against HHEM 0.610; Delta_U = +0.085
+  [+0.043, +0.148], p = 0.0001 against the null Delta_U <= -0.05, below its Holm level of 0.0125.
+- **Out of domain: met.** Mean AUC over the five datasets, RJ 0.824 against HHEM 0.800;
+  Delta_OOD = +0.024 [+0.014, +0.035], p = 0.0001 against the null Delta_OOD <= -0.02. The
+  protocol tests non-inferiority only; that the interval lies above 0 is descriptive.
+- **Cost: met.** Median latency 0.302 s per sentence, peak memory footprint 2.68 GB, on the
+  training machine (MacBook Air M2) with MLX.
+
+These are statements about agreement with the RAGTruth and LLM-AggreFact labels, against HHEM;
+MiniCheck is reported alongside and enters no claim.
 
 ## License
 
