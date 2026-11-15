@@ -10,6 +10,14 @@ pysbd==0.3.4
 torch==2.15.0
 transformers==5.22.2
 ragnarok-ai==1.13.0
+# Added on 2026-11-14 to the PyTorch environment, for the scoring tool of the trained judge
+# (training/rj_judge.py through judge-bench): the versions of the MLX environment. Additions
+# only, no package of this environment changed.
+mlx==0.32.4
+mlx-lm==0.32.2
+mlx-metal==0.32.4
+protobuf==7.36.2
+sentencepiece==0.2.3
 #
 # MLX environment: cost of the candidate bases on MLX (a separate virtual environment).
 mlx==0.32.4
