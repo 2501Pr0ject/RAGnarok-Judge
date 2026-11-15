@@ -1,0 +1,68 @@
+{
+ "data_sha256": "b01fe54c21845d3f0fe529be2e2829f249e9454402553a6223bc8737db6793e4",
+ "hhem_run": "ood-runs/hhem-l4096-mps",
+ "hhem_config_hash": "cfd9eb00c7c54380f23057a2635e49d33a5f6359c6caff4388d5ffcb5cae9adf",
+ "rj": "Qwen3-0.6B tokenizer, declared template, L = 4096",
+ "counts": {
+  "WiCE": {
+   "inputs": 358,
+   "hhem_truncated": 35,
+   "rj_qwen3_truncated": 31,
+   "both": 31,
+   "rj_only": 0,
+   "hhem_only": 4,
+   "untruncated_hhem_alone": 323,
+   "common_untruncated": 323
+  },
+  "REVEAL": {
+   "inputs": 1710,
+   "hhem_truncated": 0,
+   "rj_qwen3_truncated": 0,
+   "both": 0,
+   "rj_only": 0,
+   "hhem_only": 0,
+   "untruncated_hhem_alone": 1710,
+   "common_untruncated": 1710
+  },
+  "ClaimVerify": {
+   "inputs": 1088,
+   "hhem_truncated": 147,
+   "rj_qwen3_truncated": 141,
+   "both": 139,
+   "rj_only": 2,
+   "hhem_only": 8,
+   "untruncated_hhem_alone": 941,
+   "common_untruncated": 939
+  },
+  "FactCheck-GPT": {
+   "inputs": 1566,
+   "hhem_truncated": 0,
+   "rj_qwen3_truncated": 0,
+   "both": 0,
+   "rj_only": 0,
+   "hhem_only": 0,
+   "untruncated_hhem_alone": 1566,
+   "common_untruncated": 1566
+  },
+  "ExpertQA": {
+   "inputs": 3702,
+   "hhem_truncated": 125,
+   "rj_qwen3_truncated": 110,
+   "both": 109,
+   "rj_only": 1,
+   "hhem_only": 16,
+   "untruncated_hhem_alone": 3577,
+   "common_untruncated": 3576
+  },
+  "All five": {
+   "inputs": 8424,
+   "hhem_truncated": 307,
+   "rj_qwen3_truncated": 282,
+   "both": 279,
+   "rj_only": 3,
+   "hhem_only": 28,
+   "untruncated_hhem_alone": 8117,
+   "common_untruncated": 8114
+  }
+ }
+}

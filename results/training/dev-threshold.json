@@ -1,0 +1,16 @@
+{
+ "rule": "TARGETS.md section 4: k = floor(0.04 n), threshold = (k+1)-th smallest score of the SUPPORTED dev sentences, flagged when score < threshold",
+ "judge": "qwen3-lr3e-4/checkpoint-3462 (adapters separate)",
+ "scores_file": "training-runs/qwen3-lr3e-4/checkpoint-3462/dev_scores.json",
+ "scores_file_sha256": "f68740b28e563a8f659aac7b93e948296242d7d86f626d15b4cd4dbb1139bd3c",
+ "dev_file_sha256": "18a8e0ff0126ba12c8b76ec05391397b7f8d58438b0184ba0bd2d8907f89ac32",
+ "supported_dev_sentences": 5536,
+ "k": 221,
+ "dev_threshold": 0.20575958490371704,
+ "dev_threshold_repr": "0.20575958490371704",
+ "same_as_ragtruth_analysis_thr": true,
+ "supported_flagged": 221,
+ "scores_tied_at_threshold": 1,
+ "dev_specificity": 0.9600794797687862,
+ "derived_on": "2026-11-14"
+}

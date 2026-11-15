@@ -1,0 +1,92 @@
+{
+ "base": "pleias",
+ "checkpoint": "checkpoint-3462",
+ "updates_done": 3462,
+ "seed": 20261114,
+ "sizes": {
+  "CONTRADICTED": 300,
+  "UNSUPPORTED": 300,
+  "SUPPORTED": 600
+ },
+ "pool": "epoch 1 (13 848 examples)",
+ "forms": {
+  "adapters": {
+   "auc_P(Supported)_S_vs_C": 0.8005027777777778,
+   "auc_P(Supported)_S_vs_U": 0.9498944444444445,
+   "confusion_true_by_argmax": {
+    "SUPPORTED": {
+     "SUPPORTED": 577,
+     "UNSUPPORTED": 23,
+     "CONTRADICTED": 0
+    },
+    "UNSUPPORTED": {
+     "SUPPORTED": 73,
+     "UNSUPPORTED": 227,
+     "CONTRADICTED": 0
+    },
+    "CONTRADICTED": {
+     "SUPPORTED": 257,
+     "UNSUPPORTED": 37,
+     "CONTRADICTED": 6
+    }
+   },
+   "mean_probability_by_true_label": {
+    "SUPPORTED": {
+     "SUPPORTED": 0.8491836730732272,
+     "UNSUPPORTED": 0.09272478928149212,
+     "CONTRADICTED": 0.058091536387898185
+    },
+    "UNSUPPORTED": {
+     "SUPPORTED": 0.25278883224760645,
+     "UNSUPPORTED": 0.6967809977817039,
+     "CONTRADICTED": 0.05043017165842078
+    },
+    "CONTRADICTED": {
+     "SUPPORTED": 0.6505834243819117,
+     "UNSUPPORTED": 0.19744901033428808,
+     "CONTRADICTED": 0.15196756007460258
+    }
+   },
+   "seconds": 322.5951729579974
+  },
+  "bare base": {
+   "auc_P(Supported)_S_vs_C": 0.518525,
+   "auc_P(Supported)_S_vs_U": 0.5144444444444445,
+   "confusion_true_by_argmax": {
+    "SUPPORTED": {
+     "SUPPORTED": 0,
+     "UNSUPPORTED": 483,
+     "CONTRADICTED": 117
+    },
+    "UNSUPPORTED": {
+     "SUPPORTED": 0,
+     "UNSUPPORTED": 254,
+     "CONTRADICTED": 46
+    },
+    "CONTRADICTED": {
+     "SUPPORTED": 0,
+     "UNSUPPORTED": 207,
+     "CONTRADICTED": 93
+    }
+   },
+   "mean_probability_by_true_label": {
+    "SUPPORTED": {
+     "SUPPORTED": 0.0015643003875690435,
+     "UNSUPPORTED": 0.5969575511912505,
+     "CONTRADICTED": 0.4014781497915586
+    },
+    "UNSUPPORTED": {
+     "SUPPORTED": 0.001619865378694764,
+     "UNSUPPORTED": 0.6151962525645892,
+     "CONTRADICTED": 0.3831838807960351
+    },
+    "CONTRADICTED": {
+     "SUPPORTED": 0.00161642930299422,
+     "UNSUPPORTED": 0.5706257466971875,
+     "CONTRADICTED": 0.42775781800349555
+    }
+   },
+   "seconds": 269.6782514999941
+  }
+ }
+}
