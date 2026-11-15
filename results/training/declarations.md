@@ -80,3 +80,19 @@ On 2026-11-14 the PyTorch environment received MLX at the versions of the MLX en
 the scoring plugin: additions only, recorded in `requirements-frozen.txt`. The dev criteria of
 the two baselines reproduced by `training/dev_eval.py` in that environment were byte-identical
 before and after (HHEM 0.6406, MiniCheck 0.6185, standard error of their difference 0.0118).
+
+## 6. Attribution patterns (sections 6 and 11 of `TARGETS.md`)
+
+The recall on CONTRADICTED outside the 14 test sentences whose annotator note matches the
+attribution patterns needs the ids of these sentences. The patterns were not frozen in any
+versioned file. They were reconstructed on 2026-11-15 from the `motifs_note` column of the
+local draft of 2026-11-09, which records, for each of the 115 training candidates of training
+set rule 1, the patterns that matched its note; the six patterns are taken without any change.
+The case flag was not recorded: `re.IGNORECASE` was established on the training split, where
+it gives the 115 candidates, no more and no fewer (30 without it), then 74 after rule 5, made
+of the 58 excluded ids of `train_excluded_ids_rule1.txt` and the 16 sentences kept, identical
+to the hand validation of 2026-11-10. A note is looked for in every annotated span attached to
+the sentence; looking only in the conflict spans gives the same 115 training sentences. The
+script, `analysis/attribution_ids.py`, and its test were committed before any scoring of the
+test set; on the test set it is run once, at the analysis, with `--expect 14`, and stops
+without writing anything on any other count.
