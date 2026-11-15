@@ -1,0 +1,1013 @@
+{
+ "data": "../ragnarok-judge-ref/ood-out/llm-aggrefact-5.jsonl",
+ "data_sha256": "b01fe54c21845d3f0fe529be2e2829f249e9454402553a6223bc8737db6793e4",
+ "inputs": "all",
+ "bands": {
+  "words_0000_0250": "up to 250",
+  "words_0251_1000": "251 to 1000",
+  "words_1001_2500": "1001 to 2500",
+  "words_2501_plus": "above 2500"
+ },
+ "min_minority": 10,
+ "judges": {
+  "RJ": {
+   "run": "../ragnarok-judge-ref/ood-runs/rj-qwen3",
+   "config_hash": "b2d8fe21e651d30a5aff2ba6d30d81605df50b3fae4da1c03256b31fd5da43a8",
+   "dev_threshold": 0.20575958490371704,
+   "truncated_in_run": 282,
+   "cells": {
+    "WiCE": {
+     "words_0000_0250": {
+      "n": 3,
+      "n_supported": 2,
+      "n_not_supported": 1,
+      "minority_below_10": true,
+      "auc": 1.0,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 1.0,
+        "recall_not_supported": 1.0,
+        "specificity": 1.0
+       },
+       "0.5": {
+        "balanced_accuracy": 0.75,
+        "recall_not_supported": 1.0,
+        "specificity": 0.5
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 194,
+      "n_supported": 56,
+      "n_not_supported": 138,
+      "minority_below_10": false,
+      "auc": 0.8728002070393375,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.771868530020704,
+        "recall_not_supported": 0.8115942028985508,
+        "specificity": 0.7321428571428571
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7188146997929608,
+        "recall_not_supported": 0.8840579710144928,
+        "specificity": 0.5535714285714286
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 122,
+      "n_supported": 41,
+      "n_not_supported": 81,
+      "minority_below_10": false,
+      "auc": 0.9000301114122252,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.8461306835290575,
+        "recall_not_supported": 0.7654320987654321,
+        "specificity": 0.926829268292683
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7613670581150256,
+        "recall_not_supported": 0.8641975308641975,
+        "specificity": 0.6585365853658537
+       }
+      }
+     },
+     "words_2501_plus": {
+      "n": 39,
+      "n_supported": 12,
+      "n_not_supported": 27,
+      "minority_below_10": false,
+      "auc": 0.8580246913580247,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.8055555555555556,
+        "recall_not_supported": 0.7777777777777778,
+        "specificity": 0.8333333333333334
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7175925925925926,
+        "recall_not_supported": 0.8518518518518519,
+        "specificity": 0.5833333333333334
+       }
+      }
+     }
+    },
+    "REVEAL": {
+     "words_0000_0250": {
+      "n": 1689,
+      "n_supported": 396,
+      "n_not_supported": 1293,
+      "minority_below_10": false,
+      "auc": 0.9500613247713016,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.889855632895076,
+        "recall_not_supported": 0.8352668213457076,
+        "specificity": 0.9444444444444444
+       },
+       "0.5": {
+        "balanced_accuracy": 0.8865189013100846,
+        "recall_not_supported": 0.8917246713070379,
+        "specificity": 0.8813131313131313
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 21,
+      "n_supported": 4,
+      "n_not_supported": 17,
+      "minority_below_10": true,
+      "auc": 0.9558823529411765,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.8823529411764706,
+        "recall_not_supported": 0.7647058823529411,
+        "specificity": 1.0
+       },
+       "0.5": {
+        "balanced_accuracy": 0.9117647058823529,
+        "recall_not_supported": 0.8235294117647058,
+        "specificity": 1.0
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     },
+     "words_2501_plus": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     }
+    },
+    "ClaimVerify": {
+     "words_0000_0250": {
+      "n": 81,
+      "n_supported": 42,
+      "n_not_supported": 39,
+      "minority_below_10": false,
+      "auc": 0.7655677655677655,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.7536630036630036,
+        "recall_not_supported": 0.7692307692307693,
+        "specificity": 0.7380952380952381
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7435897435897436,
+        "recall_not_supported": 0.8205128205128205,
+        "specificity": 0.6666666666666666
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 446,
+      "n_supported": 330,
+      "n_not_supported": 116,
+      "minority_below_10": false,
+      "auc": 0.8313740856844305,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.6507314524555904,
+        "recall_not_supported": 0.3620689655172414,
+        "specificity": 0.9393939393939394
+       },
+       "0.5": {
+        "balanced_accuracy": 0.694644723092999,
+        "recall_not_supported": 0.47413793103448276,
+        "specificity": 0.9151515151515152
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 402,
+      "n_supported": 307,
+      "n_not_supported": 95,
+      "minority_below_10": false,
+      "auc": 0.8221841248071319,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.6096519801131494,
+        "recall_not_supported": 0.24210526315789474,
+        "specificity": 0.9771986970684039
+       },
+       "0.5": {
+        "balanced_accuracy": 0.6594033944796845,
+        "recall_not_supported": 0.35789473684210527,
+        "specificity": 0.9609120521172638
+       }
+      }
+     },
+     "words_2501_plus": {
+      "n": 159,
+      "n_supported": 110,
+      "n_not_supported": 49,
+      "minority_below_10": false,
+      "auc": 0.8188311688311688,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.6485157699443413,
+        "recall_not_supported": 0.30612244897959184,
+        "specificity": 0.990909090909091
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7017625231910947,
+        "recall_not_supported": 0.4489795918367347,
+        "specificity": 0.9545454545454546
+       }
+      }
+     }
+    },
+    "FactCheck-GPT": {
+     "words_0000_0250": {
+      "n": 1566,
+      "n_supported": 376,
+      "n_not_supported": 1190,
+      "minority_below_10": false,
+      "auc": 0.8501083944215985,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.7689880207402109,
+        "recall_not_supported": 0.8252100840336134,
+        "specificity": 0.7127659574468085
+       },
+       "0.5": {
+        "balanced_accuracy": 0.755287859824781,
+        "recall_not_supported": 0.888235294117647,
+        "specificity": 0.6223404255319149
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     },
+     "words_1001_2500": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     },
+     "words_2501_plus": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     }
+    },
+    "ExpertQA": {
+     "words_0000_0250": {
+      "n": 3073,
+      "n_supported": 2436,
+      "n_not_supported": 637,
+      "minority_below_10": false,
+      "auc": 0.607892342234355,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.5714984932965228,
+        "recall_not_supported": 0.5416012558869702,
+        "specificity": 0.6013957307060755
+       },
+       "0.5": {
+        "balanced_accuracy": 0.5764561792886916,
+        "recall_not_supported": 0.6295133437990581,
+        "specificity": 0.5233990147783252
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 286,
+      "n_supported": 244,
+      "n_not_supported": 42,
+      "minority_below_10": false,
+      "auc": 0.5670374707259953,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.6015807962529274,
+        "recall_not_supported": 0.42857142857142855,
+        "specificity": 0.7745901639344263
+       },
+       "0.5": {
+        "balanced_accuracy": 0.5745511319281811,
+        "recall_not_supported": 0.4523809523809524,
+        "specificity": 0.6967213114754098
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 186,
+      "n_supported": 163,
+      "n_not_supported": 23,
+      "minority_below_10": false,
+      "auc": 0.6615097359295812,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.6128300880234729,
+        "recall_not_supported": 0.391304347826087,
+        "specificity": 0.8343558282208589
+       },
+       "0.5": {
+        "balanced_accuracy": 0.6721792477994132,
+        "recall_not_supported": 0.5652173913043478,
+        "specificity": 0.7791411042944786
+       }
+      }
+     },
+     "words_2501_plus": {
+      "n": 157,
+      "n_supported": 128,
+      "n_not_supported": 29,
+      "minority_below_10": false,
+      "auc": 0.6064116379310345,
+      "thresholds": {
+       "0.20575958490371704": {
+        "balanced_accuracy": 0.6219019396551724,
+        "recall_not_supported": 0.5172413793103449,
+        "specificity": 0.7265625
+       },
+       "0.5": {
+        "balanced_accuracy": 0.5906519396551724,
+        "recall_not_supported": 0.5172413793103449,
+        "specificity": 0.6640625
+       }
+      }
+     }
+    }
+   }
+  },
+  "HHEM": {
+   "run": "../ragnarok-judge-ref/ood-runs/hhem-l4096-mps",
+   "config_hash": "cfd9eb00c7c54380f23057a2635e49d33a5f6359c6caff4388d5ffcb5cae9adf",
+   "dev_threshold": 0.18617,
+   "truncated_in_run": 307,
+   "cells": {
+    "WiCE": {
+     "words_0000_0250": {
+      "n": 3,
+      "n_supported": 2,
+      "n_not_supported": 1,
+      "minority_below_10": true,
+      "auc": 1.0,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.5,
+        "recall_not_supported": 0.0,
+        "specificity": 1.0
+       },
+       "0.5": {
+        "balanced_accuracy": 1.0,
+        "recall_not_supported": 1.0,
+        "specificity": 1.0
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 194,
+      "n_supported": 56,
+      "n_not_supported": 138,
+      "minority_below_10": false,
+      "auc": 0.8335921325051759,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.7457298136645962,
+        "recall_not_supported": 0.6521739130434783,
+        "specificity": 0.8392857142857143
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7467650103519669,
+        "recall_not_supported": 0.7971014492753623,
+        "specificity": 0.6964285714285714
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 122,
+      "n_supported": 41,
+      "n_not_supported": 81,
+      "minority_below_10": false,
+      "auc": 0.8500451671183379,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.7473652514302921,
+        "recall_not_supported": 0.5679012345679012,
+        "specificity": 0.926829268292683
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7911773562180067,
+        "recall_not_supported": 0.7530864197530864,
+        "specificity": 0.8292682926829268
+       }
+      }
+     },
+     "words_2501_plus": {
+      "n": 39,
+      "n_supported": 12,
+      "n_not_supported": 27,
+      "minority_below_10": false,
+      "auc": 0.7932098765432098,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.7638888888888888,
+        "recall_not_supported": 0.7777777777777778,
+        "specificity": 0.75
+       },
+       "0.5": {
+        "balanced_accuracy": 0.6527777777777778,
+        "recall_not_supported": 0.8888888888888888,
+        "specificity": 0.4166666666666667
+       }
+      }
+     }
+    },
+    "REVEAL": {
+     "words_0000_0250": {
+      "n": 1689,
+      "n_supported": 396,
+      "n_not_supported": 1293,
+      "minority_below_10": false,
+      "auc": 0.9379594475302132,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.8327972298389932,
+        "recall_not_supported": 0.6883217324052591,
+        "specificity": 0.9772727272727273
+       },
+       "0.5": {
+        "balanced_accuracy": 0.866369612599311,
+        "recall_not_supported": 0.785769528228925,
+        "specificity": 0.946969696969697
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 21,
+      "n_supported": 4,
+      "n_not_supported": 17,
+      "minority_below_10": true,
+      "auc": 0.9852941176470589,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.7941176470588236,
+        "recall_not_supported": 0.5882352941176471,
+        "specificity": 1.0
+       },
+       "0.5": {
+        "balanced_accuracy": 0.8823529411764706,
+        "recall_not_supported": 0.7647058823529411,
+        "specificity": 1.0
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     },
+     "words_2501_plus": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     }
+    },
+    "ClaimVerify": {
+     "words_0000_0250": {
+      "n": 81,
+      "n_supported": 42,
+      "n_not_supported": 39,
+      "minority_below_10": false,
+      "auc": 0.7466422466422467,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.7536630036630036,
+        "recall_not_supported": 0.7692307692307693,
+        "specificity": 0.7380952380952381
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7564102564102564,
+        "recall_not_supported": 0.8461538461538461,
+        "specificity": 0.6666666666666666
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 446,
+      "n_supported": 330,
+      "n_not_supported": 116,
+      "minority_below_10": false,
+      "auc": 0.8392371995820271,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.669723092998955,
+        "recall_not_supported": 0.3879310344827586,
+        "specificity": 0.9515151515151515
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7407784743991641,
+        "recall_not_supported": 0.5603448275862069,
+        "specificity": 0.9212121212121213
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 402,
+      "n_supported": 307,
+      "n_not_supported": 95,
+      "minority_below_10": false,
+      "auc": 0.8417623864220812,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.6428595919766844,
+        "recall_not_supported": 0.30526315789473685,
+        "specificity": 0.9804560260586319
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7233156180353163,
+        "recall_not_supported": 0.5052631578947369,
+        "specificity": 0.9413680781758957
+       }
+      }
+     },
+     "words_2501_plus": {
+      "n": 159,
+      "n_supported": 110,
+      "n_not_supported": 49,
+      "minority_below_10": false,
+      "auc": 0.7789424860853432,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.6246753246753247,
+        "recall_not_supported": 0.2857142857142857,
+        "specificity": 0.9636363636363636
+       },
+       "0.5": {
+        "balanced_accuracy": 0.6619666048237477,
+        "recall_not_supported": 0.46938775510204084,
+        "specificity": 0.8545454545454545
+       }
+      }
+     }
+    },
+    "FactCheck-GPT": {
+     "words_0000_0250": {
+      "n": 1566,
+      "n_supported": 376,
+      "n_not_supported": 1190,
+      "minority_below_10": false,
+      "auc": 0.8048978634006794,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.7348672447702485,
+        "recall_not_supported": 0.6957983193277311,
+        "specificity": 0.773936170212766
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7184561058465939,
+        "recall_not_supported": 0.8252100840336134,
+        "specificity": 0.6117021276595744
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     },
+     "words_1001_2500": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     },
+     "words_2501_plus": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     }
+    },
+    "ExpertQA": {
+     "words_0000_0250": {
+      "n": 3073,
+      "n_supported": 2436,
+      "n_not_supported": 637,
+      "minority_below_10": false,
+      "auc": 0.6008679333802487,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.5544736462224147,
+        "recall_not_supported": 0.3893249607535322,
+        "specificity": 0.7196223316912972
+       },
+       "0.5": {
+        "balanced_accuracy": 0.5794222198163085,
+        "recall_not_supported": 0.5808477237048666,
+        "specificity": 0.5779967159277504
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 286,
+      "n_supported": 244,
+      "n_not_supported": 42,
+      "minority_below_10": false,
+      "auc": 0.6127049180327869,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.607728337236534,
+        "recall_not_supported": 0.42857142857142855,
+        "specificity": 0.7868852459016393
+       },
+       "0.5": {
+        "balanced_accuracy": 0.5893832943013271,
+        "recall_not_supported": 0.5476190476190477,
+        "specificity": 0.6311475409836066
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 186,
+      "n_supported": 163,
+      "n_not_supported": 23,
+      "minority_below_10": false,
+      "auc": 0.5548146172312617,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.5392104561216324,
+        "recall_not_supported": 0.391304347826087,
+        "specificity": 0.6871165644171779
+       },
+       "0.5": {
+        "balanced_accuracy": 0.5310749533208856,
+        "recall_not_supported": 0.5652173913043478,
+        "specificity": 0.49693251533742333
+       }
+      }
+     },
+     "words_2501_plus": {
+      "n": 157,
+      "n_supported": 128,
+      "n_not_supported": 29,
+      "minority_below_10": false,
+      "auc": 0.5673491379310345,
+      "thresholds": {
+       "0.18617": {
+        "balanced_accuracy": 0.5773168103448276,
+        "recall_not_supported": 0.4827586206896552,
+        "specificity": 0.671875
+       },
+       "0.5": {
+        "balanced_accuracy": 0.5251885775862069,
+        "recall_not_supported": 0.6206896551724138,
+        "specificity": 0.4296875
+       }
+      }
+     }
+    }
+   }
+  },
+  "MiniCheck": {
+   "run": "../ragnarok-judge-ref/ood-runs/minicheck-bounded-mps",
+   "config_hash": "cbccef85dc7ad2138c39b0adc01f883056a7aa539e6334d6bbb1c28a01949d30",
+   "dev_threshold": 0.04438,
+   "truncated_in_run": 6,
+   "cells": {
+    "WiCE": {
+     "words_0000_0250": {
+      "n": 3,
+      "n_supported": 2,
+      "n_not_supported": 1,
+      "minority_below_10": true,
+      "auc": 1.0,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.5,
+        "recall_not_supported": 0.0,
+        "specificity": 1.0
+       },
+       "0.5": {
+        "balanced_accuracy": 0.75,
+        "recall_not_supported": 1.0,
+        "specificity": 0.5
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 194,
+      "n_supported": 56,
+      "n_not_supported": 138,
+      "minority_below_10": false,
+      "auc": 0.8686594202898551,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.7669513457556936,
+        "recall_not_supported": 0.6231884057971014,
+        "specificity": 0.9107142857142857
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7475414078674949,
+        "recall_not_supported": 0.9057971014492754,
+        "specificity": 0.5892857142857143
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 122,
+      "n_supported": 41,
+      "n_not_supported": 81,
+      "minority_below_10": false,
+      "auc": 0.8250526949713941,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.7226738934056007,
+        "recall_not_supported": 0.5185185185185185,
+        "specificity": 0.926829268292683
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7249322493224932,
+        "recall_not_supported": 0.8888888888888888,
+        "specificity": 0.5609756097560976
+       }
+      }
+     },
+     "words_2501_plus": {
+      "n": 39,
+      "n_supported": 12,
+      "n_not_supported": 27,
+      "minority_below_10": false,
+      "auc": 0.6975308641975309,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.6712962962962963,
+        "recall_not_supported": 0.5925925925925926,
+        "specificity": 0.75
+       },
+       "0.5": {
+        "balanced_accuracy": 0.611111111111111,
+        "recall_not_supported": 0.8888888888888888,
+        "specificity": 0.3333333333333333
+       }
+      }
+     }
+    },
+    "REVEAL": {
+     "words_0000_0250": {
+      "n": 1689,
+      "n_supported": 396,
+      "n_not_supported": 1293,
+      "minority_below_10": false,
+      "auc": 0.9375883740732929,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.7413784011811855,
+        "recall_not_supported": 0.4903325599381284,
+        "specificity": 0.9924242424242424
+       },
+       "0.5": {
+        "balanced_accuracy": 0.8643658159319412,
+        "recall_not_supported": 0.8120649651972158,
+        "specificity": 0.9166666666666666
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 21,
+      "n_supported": 4,
+      "n_not_supported": 17,
+      "minority_below_10": true,
+      "auc": 0.8970588235294118,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.7058823529411764,
+        "recall_not_supported": 0.4117647058823529,
+        "specificity": 1.0
+       },
+       "0.5": {
+        "balanced_accuracy": 0.6985294117647058,
+        "recall_not_supported": 0.6470588235294118,
+        "specificity": 0.75
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     },
+     "words_2501_plus": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     }
+    },
+    "ClaimVerify": {
+     "words_0000_0250": {
+      "n": 81,
+      "n_supported": 42,
+      "n_not_supported": 39,
+      "minority_below_10": false,
+      "auc": 0.7673992673992674,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.7252747252747254,
+        "recall_not_supported": 0.6410256410256411,
+        "specificity": 0.8095238095238095
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7206959706959707,
+        "recall_not_supported": 0.8461538461538461,
+        "specificity": 0.5952380952380952
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 446,
+      "n_supported": 330,
+      "n_not_supported": 116,
+      "minority_below_10": false,
+      "auc": 0.8052377220480669,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.6425809822361546,
+        "recall_not_supported": 0.3275862068965517,
+        "specificity": 0.9575757575757575
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7507836990595611,
+        "recall_not_supported": 0.6379310344827587,
+        "specificity": 0.8636363636363636
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 402,
+      "n_supported": 307,
+      "n_not_supported": 95,
+      "minority_below_10": false,
+      "auc": 0.8071661237785016,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.6258186182067547,
+        "recall_not_supported": 0.28421052631578947,
+        "specificity": 0.9674267100977199
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7502657294702555,
+        "recall_not_supported": 0.6210526315789474,
+        "specificity": 0.8794788273615635
+       }
+      }
+     },
+     "words_2501_plus": {
+      "n": 159,
+      "n_supported": 110,
+      "n_not_supported": 49,
+      "minority_below_10": false,
+      "auc": 0.8030612244897959,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.6020408163265306,
+        "recall_not_supported": 0.20408163265306123,
+        "specificity": 1.0
+       },
+       "0.5": {
+        "balanced_accuracy": 0.6778293135435993,
+        "recall_not_supported": 0.5102040816326531,
+        "specificity": 0.8454545454545455
+       }
+      }
+     }
+    },
+    "FactCheck-GPT": {
+     "words_0000_0250": {
+      "n": 1566,
+      "n_supported": 376,
+      "n_not_supported": 1190,
+      "minority_below_10": false,
+      "auc": 0.8411731181834435,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.7361657428929018,
+        "recall_not_supported": 0.5840336134453782,
+        "specificity": 0.8882978723404256
+       },
+       "0.5": {
+        "balanced_accuracy": 0.7471571607366351,
+        "recall_not_supported": 0.8453781512605042,
+        "specificity": 0.648936170212766
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     },
+     "words_1001_2500": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     },
+     "words_2501_plus": {
+      "n": 0,
+      "n_supported": 0,
+      "n_not_supported": 0,
+      "minority_below_10": true
+     }
+    },
+    "ExpertQA": {
+     "words_0000_0250": {
+      "n": 3073,
+      "n_supported": 2436,
+      "n_not_supported": 637,
+      "minority_below_10": false,
+      "auc": 0.6117422338393486,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.562609393890182,
+        "recall_not_supported": 0.36577708006279436,
+        "specificity": 0.7594417077175698
+       },
+       "0.5": {
+        "balanced_accuracy": 0.584718237427597,
+        "recall_not_supported": 0.6718995290423861,
+        "specificity": 0.4975369458128079
+       }
+      }
+     },
+     "words_0251_1000": {
+      "n": 286,
+      "n_supported": 244,
+      "n_not_supported": 42,
+      "minority_below_10": false,
+      "auc": 0.615144418423107,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.578551912568306,
+        "recall_not_supported": 0.3333333333333333,
+        "specificity": 0.8237704918032787
+       },
+       "0.5": {
+        "balanced_accuracy": 0.577088212334114,
+        "recall_not_supported": 0.5476190476190477,
+        "specificity": 0.6065573770491803
+       }
+      }
+     },
+     "words_1001_2500": {
+      "n": 186,
+      "n_supported": 163,
+      "n_not_supported": 23,
+      "minority_below_10": false,
+      "auc": 0.5972259269138437,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.5752200586823153,
+        "recall_not_supported": 0.2608695652173913,
+        "specificity": 0.8895705521472392
+       },
+       "0.5": {
+        "balanced_accuracy": 0.5550813550280075,
+        "recall_not_supported": 0.4782608695652174,
+        "specificity": 0.6319018404907976
+       }
+      }
+     },
+     "words_2501_plus": {
+      "n": 157,
+      "n_supported": 128,
+      "n_not_supported": 29,
+      "minority_below_10": false,
+      "auc": 0.6600215517241379,
+      "thresholds": {
+       "0.04438": {
+        "balanced_accuracy": 0.5959051724137931,
+        "recall_not_supported": 0.3793103448275862,
+        "specificity": 0.8125
+       },
+       "0.5": {
+        "balanced_accuracy": 0.6417025862068966,
+        "recall_not_supported": 0.6896551724137931,
+        "specificity": 0.59375
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -322,8 +322,73 @@ the AUCs below are a description without intervals:
 
 ### By band of document length
 
-The figures below come from the harness reports: point values at 0.5, with the five datasets
-pooled. No cell has fewer than 10 sentences of its minority class.
+Section 7: "the AUC and the balanced accuracies are also reported by band of document length
+[...] A metric by band is computed per dataset; cells with fewer than 10 sentences of the
+minority class are flagged."
+
+**Declaration.** No script committed before the evaluation computed this measure. The script
+`ood/ood_bands.py` was written after the scoring, to compute it as section 7 defines it, and
+it involves no choice:
+
+- the bands are the `length_band` field written by the converter committed at `protocol-v1`;
+- the thresholds are each judge's RAGTruth dev threshold and 0.5;
+- the metric functions are those of `ood/ood_metrics.py`;
+- the inputs are all 8424 inputs, those of the target.
+
+The values are point values, since section 7 asks no interval for this breakdown. The script and
+its test were committed in a commit of their own before the script was run. It was run once, on
+the existing runs, and scored nothing. Its output is `results/ood/bands.json`.
+
+Point values, all inputs. Cells whose minority class has fewer than 10 claims are flagged. A band
+with no input has no metric.
+
+**WiCE**
+
+| Band, words of the document | Inputs | Supported / not supported | Flag | AUC, RJ / HHEM / MiniCheck | Balanced accuracy at the dev threshold, RJ / HHEM / MiniCheck | Balanced accuracy at 0.5, RJ / HHEM / MiniCheck |
+|---|---|---|---|---|---|---|
+| up to 250 | 3 | 2 / 1 | minority below 10 | 1.0000 / 1.0000 / 1.0000 | 1.0000 / 0.5000 / 0.5000 | 0.7500 / 1.0000 / 0.7500 |
+| 251 to 1000 | 194 | 56 / 138 |  | 0.8728 / 0.8336 / 0.8687 | 0.7719 / 0.7457 / 0.7670 | 0.7188 / 0.7468 / 0.7475 |
+| 1001 to 2500 | 122 | 41 / 81 |  | 0.9000 / 0.8500 / 0.8251 | 0.8461 / 0.7474 / 0.7227 | 0.7614 / 0.7912 / 0.7249 |
+| above 2500 | 39 | 12 / 27 |  | 0.8580 / 0.7932 / 0.6975 | 0.8056 / 0.7639 / 0.6713 | 0.7176 / 0.6528 / 0.6111 |
+
+**REVEAL**
+
+| Band, words of the document | Inputs | Supported / not supported | Flag | AUC, RJ / HHEM / MiniCheck | Balanced accuracy at the dev threshold, RJ / HHEM / MiniCheck | Balanced accuracy at 0.5, RJ / HHEM / MiniCheck |
+|---|---|---|---|---|---|---|
+| up to 250 | 1689 | 396 / 1293 |  | 0.9501 / 0.9380 / 0.9376 | 0.8899 / 0.8328 / 0.7414 | 0.8865 / 0.8664 / 0.8644 |
+| 251 to 1000 | 21 | 4 / 17 | minority below 10 | 0.9559 / 0.9853 / 0.8971 | 0.8824 / 0.7941 / 0.7059 | 0.9118 / 0.8824 / 0.6985 |
+| 1001 to 2500 | 0 | | | | | |
+| above 2500 | 0 | | | | | |
+
+**ClaimVerify**
+
+| Band, words of the document | Inputs | Supported / not supported | Flag | AUC, RJ / HHEM / MiniCheck | Balanced accuracy at the dev threshold, RJ / HHEM / MiniCheck | Balanced accuracy at 0.5, RJ / HHEM / MiniCheck |
+|---|---|---|---|---|---|---|
+| up to 250 | 81 | 42 / 39 |  | 0.7656 / 0.7466 / 0.7674 | 0.7537 / 0.7537 / 0.7253 | 0.7436 / 0.7564 / 0.7207 |
+| 251 to 1000 | 446 | 330 / 116 |  | 0.8314 / 0.8392 / 0.8052 | 0.6507 / 0.6697 / 0.6426 | 0.6946 / 0.7408 / 0.7508 |
+| 1001 to 2500 | 402 | 307 / 95 |  | 0.8222 / 0.8418 / 0.8072 | 0.6097 / 0.6429 / 0.6258 | 0.6594 / 0.7233 / 0.7503 |
+| above 2500 | 159 | 110 / 49 |  | 0.8188 / 0.7789 / 0.8031 | 0.6485 / 0.6247 / 0.6020 | 0.7018 / 0.6620 / 0.6778 |
+
+**FactCheck-GPT**
+
+| Band, words of the document | Inputs | Supported / not supported | Flag | AUC, RJ / HHEM / MiniCheck | Balanced accuracy at the dev threshold, RJ / HHEM / MiniCheck | Balanced accuracy at 0.5, RJ / HHEM / MiniCheck |
+|---|---|---|---|---|---|---|
+| up to 250 | 1566 | 376 / 1190 |  | 0.8501 / 0.8049 / 0.8412 | 0.7690 / 0.7349 / 0.7362 | 0.7553 / 0.7185 / 0.7472 |
+| 251 to 1000 | 0 | | | | | |
+| 1001 to 2500 | 0 | | | | | |
+| above 2500 | 0 | | | | | |
+
+**ExpertQA**
+
+| Band, words of the document | Inputs | Supported / not supported | Flag | AUC, RJ / HHEM / MiniCheck | Balanced accuracy at the dev threshold, RJ / HHEM / MiniCheck | Balanced accuracy at 0.5, RJ / HHEM / MiniCheck |
+|---|---|---|---|---|---|---|
+| up to 250 | 3073 | 2436 / 637 |  | 0.6079 / 0.6009 / 0.6117 | 0.5715 / 0.5545 / 0.5626 | 0.5765 / 0.5794 / 0.5847 |
+| 251 to 1000 | 286 | 244 / 42 |  | 0.5670 / 0.6127 / 0.6151 | 0.6016 / 0.6077 / 0.5786 | 0.5746 / 0.5894 / 0.5771 |
+| 1001 to 2500 | 186 | 163 / 23 |  | 0.6615 / 0.5548 / 0.5972 | 0.6128 / 0.5392 / 0.5752 | 0.6722 / 0.5311 / 0.5551 |
+| above 2500 | 157 | 128 / 29 |  | 0.6064 / 0.5673 / 0.6600 | 0.6219 / 0.5773 / 0.5959 | 0.5907 / 0.5252 / 0.6417 |
+
+For comparison, the reports of the harness give point values at 0.5 with the five datasets
+pooled:
 
 | Band, words of the document | Inputs | Minority class | Balanced accuracy, RJ / HHEM / MiniCheck | F1 not supported, RJ / HHEM / MiniCheck |
 |---|---|---|---|---|
@@ -331,9 +396,6 @@ pooled. No cell has fewer than 10 sentences of its minority class.
 | 251 to 1000 | 947 | 313 | 0.735 / 0.732 / 0.742 | 0.646 / 0.642 / 0.655 |
 | 1001 to 2500 | 710 | 199 | 0.733 / 0.702 / 0.744 | 0.619 / 0.570 / 0.623 |
 | above 2500 | 355 | 105 | 0.680 / 0.618 / 0.675 | 0.550 / 0.489 / 0.550 |
-
-Section 7 asks for the AUC and the balanced accuracies by band, computed per dataset. No committed
-script computes them, and they are not computed at this commit.
 
 ### Check of the baselines against the published figures
 
@@ -391,7 +453,8 @@ entry.
 - **One evaluation.** The tag `selection-v1` was set at 18:05 CET. Each run then scored its data
   once, with no interruption and no resumption, and no intermediate checkpoint was scored on test or
   out of domain. Each analysis was run once: `ragtruth_analysis.py` once, `ood_metrics.py` once per
-  judge and `ood_paired.py` once per pair. There was no re-evaluation.
+  judge, `ood_paired.py` once per pair and `ood_bands.py` once, the last one written after the
+  scoring (see "By band of document length"). There was no re-evaluation.
 - **Declarations made before the evaluation** are in `results/training/declarations.md`: the pilot, the check
   on training examples, the 50 dev sentences scored again to check the plugin, the configuration of
   use, the environment, and the attribution patterns.
@@ -420,6 +483,7 @@ All paths in this table are relative to `results/`.
 | `ood/metrics-hhem-l4096-mps-common.json`, `ood/metrics-minicheck-bounded-mps-common.json` | the baselines recomputed with the common untruncated subset |
 | `ood/paired-rj-hhem.json` | output of `ood/ood_paired.py`: the out-of-domain target |
 | `ood/paired-rj-minicheck.json` | the same against MiniCheck, alongside |
+| `ood/bands.json` | output of `ood/ood_bands.py`: AUC and balanced accuracies by band of document length, per dataset, for the three judges |
 | `ood/rj-qwen3/report.{json,md}` | report of the harness out of domain (threshold 0.5, not the protocol) |
 | `training/` | training, selection, dev threshold, common subset and declarations, fixed at `selection-v1` |
 | `cost/rj-qwen3-adapter-mlx-739/` | cost of RJ |

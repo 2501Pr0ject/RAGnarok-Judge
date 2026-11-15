@@ -49,7 +49,7 @@ abbreviation used for the judge in the protocol file.
   define the meta sentences and the abstentions; `prompt_templates.py`, the reference
   implementation of the templates.
 - `ood/`: the out-of-domain scripts (overlap check, conversion, the two judge wrappers, the
-  measurement, the metrics and the paired difference), the published figures used for the
+  measurement, the metrics, the paired difference and the metrics by band of document length), the published figures used for the
   pipeline check, and the commands run.
 - `cost/`: the cost measurement script and the commands run.
 - `results/`: `RESULTS.md`, the results of the evaluation of the retained judge; the
