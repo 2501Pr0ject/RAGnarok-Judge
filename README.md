@@ -93,10 +93,10 @@ abbreviation used for the judge in the protocol file.
 - `cost/`: the cost measurement script and the commands run.
 - `results/`: `RESULTS.md`, the results of the evaluation of the retained judge; the
   aggregates of training and selection (`results/training/`); the aggregates of every run
-  recorded in `TARGETS.md`: conversion report and
-  manifests, harness reports, metrics, paired differences, the measurement of the MiniCheck
-  wrapper, cost summaries, and the analysis of the two baselines on the RAGTruth test set.
-  No text, label or score of a sentence appears in them.
+  recorded in `TARGETS.md`: conversion report and manifests, harness reports, metrics, paired
+  differences, the measurement of the MiniCheck wrapper, cost summaries, and the analysis of
+  the two baselines on the RAGTruth test set. No text, label or score of a sentence appears in
+  them.
 - `requirements-frozen.txt`: the exact versions used; `TARGETS.md` records the hashes of every
   data file used, so that the files can be regenerated and checked.
 
