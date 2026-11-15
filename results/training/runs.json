@@ -1,0 +1,371 @@
+{
+ "pilot": {
+  "base": "Pleias-RAG-350M",
+  "peak_learning_rate": 0.0001,
+  "updates": 300,
+  "date": "2026-11-13",
+  "segments": [
+   {
+    "started": "2026-11-13T13:17:55",
+    "ended": "2026-11-13T13:45:03",
+    "updates": [
+     1,
+     210
+    ],
+    "stopped": "SIGINT after update 210, on purpose",
+    "wall_s": 1628.39,
+    "max_rss_bytes": 1261486080,
+    "peak_footprint_bytes": 2852898544
+   },
+   {
+    "started": "2026-11-13T13:45:13",
+    "ended": "2026-11-13T13:58:17",
+    "updates": [
+     201,
+     300
+    ],
+    "resumed_from_state": 200,
+    "wall_s": 783.94,
+    "max_rss_bytes": 1277919232,
+    "peak_footprint_bytes": 2860648464
+   }
+  ],
+  "wall_clock_total": "40 min 22 s",
+  "seconds_per_update_mean": 7.74,
+  "seconds_per_1000_tokens": 1.49,
+  "mlx_peak_gb": 2.098,
+  "swap_used_mb": 0,
+  "resumption": "updates 201 to 210 replayed from the state of update 200: loss, gradient norm and tokens bit-identical to the first pass; every update starts at position (update - 1) * 8",
+  "loss_by_tranche_of_25": [
+   {
+    "updates": [
+     1,
+     25
+    ],
+    "loss_mean": 3.6329,
+    "grad_norm_min": 2.598,
+    "grad_norm_median": 5.814,
+    "grad_norm_max": 10.54,
+    "seconds_per_update": 6.89
+   },
+   {
+    "updates": [
+     26,
+     50
+    ],
+    "loss_mean": 1.055,
+    "grad_norm_min": 0.941,
+    "grad_norm_median": 3.507,
+    "grad_norm_max": 15.898,
+    "seconds_per_update": 7.36
+   },
+   {
+    "updates": [
+     51,
+     75
+    ],
+    "loss_mean": 0.9799,
+    "grad_norm_min": 1.032,
+    "grad_norm_median": 2.315,
+    "grad_norm_max": 6.241,
+    "seconds_per_update": 7.43
+   },
+   {
+    "updates": [
+     76,
+     100
+    ],
+    "loss_mean": 0.889,
+    "grad_norm_min": 0.698,
+    "grad_norm_median": 2.618,
+    "grad_norm_max": 5.54,
+    "seconds_per_update": 7.45
+   },
+   {
+    "updates": [
+     101,
+     125
+    ],
+    "loss_mean": 0.8662,
+    "grad_norm_min": 0.487,
+    "grad_norm_median": 2.175,
+    "grad_norm_max": 6.244,
+    "seconds_per_update": 7.85
+   },
+   {
+    "updates": [
+     126,
+     150
+    ],
+    "loss_mean": 0.91,
+    "grad_norm_min": 0.808,
+    "grad_norm_median": 1.765,
+    "grad_norm_max": 4.605,
+    "seconds_per_update": 8.18
+   },
+   {
+    "updates": [
+     151,
+     175
+    ],
+    "loss_mean": 0.8444,
+    "grad_norm_min": 0.563,
+    "grad_norm_median": 1.581,
+    "grad_norm_max": 4.543,
+    "seconds_per_update": 8.01
+   },
+   {
+    "updates": [
+     176,
+     200
+    ],
+    "loss_mean": 0.7955,
+    "grad_norm_min": 0.394,
+    "grad_norm_median": 1.373,
+    "grad_norm_max": 3.427,
+    "seconds_per_update": 8.55
+   },
+   {
+    "updates": [
+     201,
+     225
+    ],
+    "loss_mean": 0.8838,
+    "grad_norm_min": 0.487,
+    "grad_norm_median": 1.38,
+    "grad_norm_max": 2.961,
+    "seconds_per_update": 7.8
+   },
+   {
+    "updates": [
+     226,
+     250
+    ],
+    "loss_mean": 0.7578,
+    "grad_norm_min": 0.467,
+    "grad_norm_median": 1.276,
+    "grad_norm_max": 3.564,
+    "seconds_per_update": 8.79
+   },
+   {
+    "updates": [
+     251,
+     275
+    ],
+    "loss_mean": 0.7993,
+    "grad_norm_min": 0.525,
+    "grad_norm_median": 1.383,
+    "grad_norm_max": 3.73,
+    "seconds_per_update": 7.22
+   },
+   {
+    "updates": [
+     276,
+     300
+    ],
+    "loss_mean": 0.7575,
+    "grad_norm_min": 0.461,
+    "grad_norm_median": 1.401,
+    "grad_norm_max": 4.203,
+    "seconds_per_update": 7.42
+   }
+  ],
+  "merge_check_50_training_examples": {
+   "merge_float32_max": 0.0,
+   "merge_float32_mean": 0.0,
+   "tolerance": 0.001,
+   "passed": true,
+   "merged_bfloat16_vs_separate_adapters_max": 0.1534,
+   "merged_bfloat16_vs_separate_adapters_mean": 0.11396,
+   "float32_vs_bfloat16_separate_adapters_max": 0.0375,
+   "float32_vs_bfloat16_separate_adapters_mean": 0.02018
+  },
+  "weights": "deleted, merged weights too",
+  "first_300_updates_of_run_1": "bit-identical to the pilot (loss, gradient norm, tokens, position, learning rate)"
+ },
+ "runs": {
+  "pleias-lr1e-4": {
+   "base": "Pleias-RAG-350M",
+   "peak_learning_rate": 0.0001,
+   "started": "2026-11-13T14:12:34",
+   "ended": "2026-11-13T23:29:25",
+   "updates": 3462,
+   "log_lines": 3462,
+   "resumptions": [],
+   "wall_s": 33410.98,
+   "training_s": 26042.3,
+   "dev_passes_s": 7325.4,
+   "seconds_per_update_mean": 7.52,
+   "seconds_per_update_median": 7.25,
+   "seconds_per_1000_tokens": 1.46,
+   "peak_footprint_bytes": 2900657928,
+   "max_rss_bytes": 1296072704,
+   "mlx_peak_gb": 2.099,
+   "swap_rule": "active, not triggered",
+   "checkpoints": [
+    {
+     "checkpoint": "pleias-lr1e-4/checkpoint-0866",
+     "update": 866,
+     "criterion": 0.587891669579798,
+     "pauc_U": 0.6601335526630076,
+     "pauc_C": 0.5156497864965883,
+     "dev_sentences": 6011,
+     "dev_pass_s": 1815.4,
+     "resumed_from": []
+    },
+    {
+     "checkpoint": "pleias-lr1e-4/checkpoint-1731",
+     "update": 1731,
+     "criterion": 0.598680874044436,
+     "pauc_U": 0.6757920634002721,
+     "pauc_C": 0.5215696846886001,
+     "dev_sentences": 6011,
+     "dev_pass_s": 1879.1,
+     "resumed_from": []
+    },
+    {
+     "checkpoint": "pleias-lr1e-4/checkpoint-2597",
+     "update": 2597,
+     "criterion": 0.6037844379181724,
+     "pauc_U": 0.6876765239305688,
+     "pauc_C": 0.519892351905776,
+     "dev_sentences": 6011,
+     "dev_pass_s": 1802.2,
+     "resumed_from": []
+    },
+    {
+     "checkpoint": "pleias-lr1e-4/checkpoint-3462",
+     "update": 3462,
+     "criterion": 0.6049750390747206,
+     "pauc_U": 0.6913751455143855,
+     "pauc_C": 0.5185749326350558,
+     "dev_sentences": 6011,
+     "dev_pass_s": 1828.7,
+     "resumed_from": []
+    }
+   ]
+  },
+  "pleias-lr3e-4": {
+   "base": "Pleias-RAG-350M",
+   "peak_learning_rate": 0.0003,
+   "started": "2026-11-14T00:05:50",
+   "ended": "2026-11-14T08:46:51",
+   "updates": 3462,
+   "log_lines": 3462,
+   "resumptions": [],
+   "wall_s": 31261.33,
+   "training_s": 24397.1,
+   "dev_passes_s": 6820.2,
+   "seconds_per_update_mean": 7.05,
+   "seconds_per_update_median": 6.79,
+   "seconds_per_1000_tokens": 1.36,
+   "peak_footprint_bytes": 2971338528,
+   "max_rss_bytes": 1294663680,
+   "mlx_peak_gb": 2.099,
+   "swap_rule": "active, not triggered",
+   "checkpoints": [
+    {
+     "checkpoint": "pleias-lr3e-4/checkpoint-0866",
+     "update": 866,
+     "criterion": 0.5834700757740383,
+     "pauc_U": 0.6565787168920725,
+     "pauc_C": 0.5103614346560041,
+     "dev_sentences": 6011,
+     "dev_pass_s": 1689.6,
+     "resumed_from": []
+    },
+    {
+     "checkpoint": "pleias-lr3e-4/checkpoint-1731",
+     "update": 1731,
+     "criterion": 0.6030389769478155,
+     "pauc_U": 0.7020998909637348,
+     "pauc_C": 0.5039780629318962,
+     "dev_sentences": 6011,
+     "dev_pass_s": 1677.9,
+     "resumed_from": []
+    },
+    {
+     "checkpoint": "pleias-lr3e-4/checkpoint-2597",
+     "update": 2597,
+     "criterion": 0.6035831148634556,
+     "pauc_U": 0.7009760568597723,
+     "pauc_C": 0.506190172867139,
+     "dev_sentences": 6011,
+     "dev_pass_s": 1672.0,
+     "resumed_from": []
+    },
+    {
+     "checkpoint": "pleias-lr3e-4/checkpoint-3462",
+     "update": 3462,
+     "criterion": 0.6110761357328196,
+     "pauc_U": 0.7067775132188663,
+     "pauc_C": 0.515374758246773,
+     "dev_sentences": 6011,
+     "dev_pass_s": 1780.7,
+     "resumed_from": []
+    }
+   ]
+  },
+  "qwen3-lr3e-4": {
+   "base": "Qwen3-0.6B",
+   "peak_learning_rate": 0.0003,
+   "started": "2026-11-14T09:07:28",
+   "ended": "2026-11-14T23:29:01",
+   "updates": 3462,
+   "log_lines": 3462,
+   "resumptions": [],
+   "wall_s": 51692.66,
+   "training_s": 40639.5,
+   "dev_passes_s": 11016.4,
+   "seconds_per_update_mean": 11.74,
+   "seconds_per_update_median": 11.3,
+   "seconds_per_1000_tokens": 2.32,
+   "peak_footprint_bytes": 3513927936,
+   "max_rss_bytes": 1938128896,
+   "mlx_peak_gb": 2.667,
+   "swap_rule": "active, not triggered",
+   "checkpoints": [
+    {
+     "checkpoint": "qwen3-lr3e-4/checkpoint-0866",
+     "update": 866,
+     "criterion": 0.6735772081400175,
+     "pauc_U": 0.7860587580593389,
+     "pauc_C": 0.5610956582206963,
+     "dev_sentences": 6011,
+     "dev_pass_s": 2708.3,
+     "resumed_from": []
+    },
+    {
+     "checkpoint": "qwen3-lr3e-4/checkpoint-1731",
+     "update": 1731,
+     "criterion": 0.6835612864148141,
+     "pauc_U": 0.808213558965488,
+     "pauc_C": 0.5589090138641402,
+     "dev_sentences": 6011,
+     "dev_pass_s": 2723.7,
+     "resumed_from": []
+    },
+    {
+     "checkpoint": "qwen3-lr3e-4/checkpoint-2597",
+     "update": 2597,
+     "criterion": 0.706802013023081,
+     "pauc_U": 0.8148617540004408,
+     "pauc_C": 0.5987422720457213,
+     "dev_sentences": 6011,
+     "dev_pass_s": 2748.9,
+     "resumed_from": []
+    },
+    {
+     "checkpoint": "qwen3-lr3e-4/checkpoint-3462",
+     "update": 3462,
+     "criterion": 0.7111635814900613,
+     "pauc_U": 0.8115583469733427,
+     "pauc_C": 0.6107688160067799,
+     "dev_sentences": 6011,
+     "dev_pass_s": 2835.5,
+     "resumed_from": []
+    }
+   ]
+  }
+ }
+}

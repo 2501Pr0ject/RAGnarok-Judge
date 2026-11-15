@@ -1,0 +1,187 @@
+{
+ "judge_spec": "mlx:Qwen/Qwen3-0.6B",
+ "judge": {
+  "stack": "mlx",
+  "model": "Qwen/Qwen3-0.6B",
+  "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "device": "gpu",
+  "dtype": "mlx.core.bfloat16",
+  "published_dtype": "mlx.core.bfloat16",
+  "converted_to_bfloat16": false,
+  "parameters": 596049920,
+  "max_length": 4096,
+  "template": "declared (qwen3)",
+  "template_tokens": 84,
+  "adapters": "separate, not merged",
+  "adapter_folder": "checkpoint-3462",
+  "adapter_update": 3462,
+  "adapter_rank": 8,
+  "adapter_scale": 2.0,
+  "labels": 3,
+  "mlx": "0.32.4",
+  "mlx_lm": "0.32.2"
+ },
+ "release_cache": true,
+ "data": "../ragnarok-judge-ref/ragtruth-out/test.jsonl",
+ "data_sha256": "5eb4aa53ad08a7dd73529008411735d51ed5589e0e407ab0a9af143c90608257",
+ "ids_from": "../ragnarok-judge-ref/bench-1.13/quota/hhem-mps/attempts.jsonl",
+ "n_calls": 739,
+ "n_failed": 0,
+ "tokens": {
+  "min": 252,
+  "max": 2170,
+  "truncated": 0
+ },
+ "started_at": "2026-11-15T13:54:17+00:00",
+ "ended_at": "2026-11-15T13:59:08+00:00",
+ "duration_s": 291.8,
+ "load_s": 1.7,
+ "previous_run_ended_at": "2026-11-09T14:22:11+00:00",
+ "minutes_since_previous_run": 8612.1,
+ "latency": {
+  "call_plus_release": {
+   "n": 739,
+   "p50_ms": 302.27,
+   "p90_ms": 775.79,
+   "mean_ms": 388.23,
+   "max_ms": 1368.52
+  },
+  "call": {
+   "n": 739,
+   "p50_ms": 300.38,
+   "p90_ms": 773.58,
+   "mean_ms": 381.09,
+   "max_ms": 1366.92
+  },
+  "release": {
+   "n": 739,
+   "p50_ms": 7.88,
+   "p90_ms": 12.48,
+   "mean_ms": 7.13,
+   "max_ms": 19.24
+  },
+  "short_input_tokens": 512,
+  "by_fifth_short_inputs": [
+   {
+    "fifth": 1,
+    "n": 26,
+    "p50_ms": 226.62,
+    "mean_tokens": 380,
+    "p50_ms_per_100_tokens": 60.29
+   },
+   {
+    "fifth": 2,
+    "n": 32,
+    "p50_ms": 270.34,
+    "mean_tokens": 430,
+    "p50_ms_per_100_tokens": 57.72
+   },
+   {
+    "fifth": 3,
+    "n": 67,
+    "p50_ms": 253.14,
+    "mean_tokens": 408,
+    "p50_ms_per_100_tokens": 60.8
+   },
+   {
+    "fifth": 4,
+    "n": 116,
+    "p50_ms": 225.44,
+    "mean_tokens": 383,
+    "p50_ms_per_100_tokens": 61.43
+   },
+   {
+    "fifth": 5,
+    "n": 125,
+    "p50_ms": 221.46,
+    "mean_tokens": 369,
+    "p50_ms_per_100_tokens": 62.5
+   }
+  ],
+  "by_tokens": [
+   {
+    "tokens": "0 to 512",
+    "n": 366,
+    "p50_ms": 224.91,
+    "p90_ms": 286.11
+   },
+   {
+    "tokens": "513 to 1024",
+    "n": 241,
+    "p50_ms": 342.53,
+    "p90_ms": 488.56
+   },
+   {
+    "tokens": "1025 to 2048",
+    "n": 126,
+    "p50_ms": 783.05,
+    "p90_ms": 992.28
+   },
+   {
+    "tokens": "2049 to 4096",
+    "n": 6,
+    "p50_ms": 1316.54,
+    "p90_ms": 1367.25
+   }
+  ]
+ },
+ "memory": {
+  "footprint_after_load": 1537787584,
+  "peak_footprint_inputs": 2675705824,
+  "peak_footprint_total": 2675705824,
+  "max_resident": 1616822272,
+  "allocator_max_before_release": {
+   "allocated": 1274285298,
+   "cache": 1126653774,
+   "mlx_peak": 2262664168
+  }
+ },
+ "targets": [
+  {
+   "name": "median latency per call",
+   "value": "0.302 s",
+   "limit": "< 1.0 s",
+   "verdict": "met"
+  },
+  {
+   "name": "peak memory footprint over the 739 inputs",
+   "value": "2.68 GB (2552 MiB)",
+   "limit": "< 3.0 GB",
+   "verdict": "met"
+  }
+ ],
+ "reported_without_threshold": [
+  {
+   "name": "maximum-length input of 4096 tokens, latency",
+   "value": "3.011 s"
+  },
+  {
+   "name": "peak memory footprint including that input",
+   "value": "2.68 GB (2552 MiB)"
+  }
+ ],
+ "thermal_before": [
+  "Note: No thermal warning level has been recorded",
+  "Note: No performance warning level has been recorded",
+  "Note: No CPU power status has been recorded"
+ ],
+ "thermal_after": [
+  "Note: No thermal warning level has been recorded",
+  "Note: No performance warning level has been recorded",
+  "Note: No CPU power status has been recorded"
+ ],
+ "machine": {
+  "platform": "macOS-26.5-arm64-arm-64bit",
+  "python": "3.12.9",
+  "model": "Mac14,2",
+  "memory_bytes": "17179869184",
+  "chip": "Apple M2"
+ },
+ "environment": {},
+ "max_length_input": {
+  "tokens": 4096,
+  "truncated": true,
+  "exact": true,
+  "latency_ms": 3010.6
+ }
+}

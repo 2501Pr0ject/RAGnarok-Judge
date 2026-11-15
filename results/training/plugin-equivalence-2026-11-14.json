@@ -1,0 +1,31 @@
+{
+ "checkpoint": "qwen3-lr3e-4/checkpoint-3462",
+ "adapters_sha256": "44cdeecac3ae75c9bb53d538a14968667f9af2fa730a9dfae9477b6f2b1bed31",
+ "train_50_plugin_vs_score_records": {
+  "n": 50,
+  "max": 0.0,
+  "mean": 0.0,
+  "identical": 50
+ },
+ "dev_50_plugin_vs_dev_scores_of_run": {
+  "n": 50,
+  "max": 0.0,
+  "mean": 0.0,
+  "identical": 50
+ },
+ "dev_50_labels": {
+  "SUPPORTED": 49,
+  "UNSUPPORTED": 1,
+  "CONTRADICTED": 0
+ },
+ "converter": {
+  "sentences": 6011,
+  "scores_identical_to_dev_scores_json": true,
+  "truncated_inputs": 0,
+  "criterion_from_converted_file": 0.7111635814900613,
+  "criterion_in_dev_json": 0.7111635814900613,
+  "config_hash_equals_harness_runs": true,
+  "config_hash": "b2d8fe21e651d30a5aff2ba6d30d81605df50b3fae4da1c03256b31fd5da43a8",
+  "data_sha256_is_dev_file": true
+ }
+}
