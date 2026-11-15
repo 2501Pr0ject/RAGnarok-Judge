@@ -491,3 +491,10 @@ All paths in this table are relative to `results/`.
 The files are copied as the scripts wrote them. The paths they record are those of the machine that
 produced them, relative to the root of the repository; the data files they name stay local and are
 identified by their SHA-256.
+
+## Erratum, 2026-11-15
+
+Section "The evaluation" says that the tag `selection-v1` was set at 18:05 CET. That is the time
+of the merge of pull request #4, 18:05:44 CET; the tag object itself is dated 18:06:03 CET. Both
+precede the start of the scoring of the test set, at 18:08 CET. The original sentence is left
+unchanged.
