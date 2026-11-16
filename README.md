@@ -2,7 +2,7 @@
 
 Status: protocol frozen on 2026-11-10 (tag `protocol-v1`); judge trained and selected (tag
 `selection-v1`) and evaluated once on 2026-11-15, results in `results/RESULTS.md`. The model is
-not published yet.
+published: https://huggingface.co/ragnarok-ai/gjallar-0.6b.
 
 RAGnarok Judge is a sentence-level faithfulness judge for the answers of retrieval-augmented
 systems: given a context and one sentence of an answer, it returns a score in [0, 1] that the
@@ -63,10 +63,11 @@ reported alongside and enters no claim.
 
 ## Models
 
-Gjallar is the name of the models produced by the RAGnarok Judge project. They will be
-published under the Hugging Face organisation `ragnarok-ai`, for instance
-`ragnarok-ai/gjallar-0.6b`, the suffix following the base model selected. RJ is the
-abbreviation used for the judge in the protocol file.
+Gjallar is the name of the models produced by the RAGnarok Judge project. They are
+published under the Hugging Face organisation `ragnarok-ai`, the suffix following the base
+model selected. The retained judge is `ragnarok-ai/gjallar-0.6b`
+(https://huggingface.co/ragnarok-ai/gjallar-0.6b). Its model card describes how to use it, with
+MLX on Apple Silicon. RJ is the abbreviation used for the judge in the protocol file.
 
 ## What this repository holds
 
