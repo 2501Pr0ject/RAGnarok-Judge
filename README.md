@@ -45,6 +45,16 @@ MiniCheck is reported alongside and enters no claim.
 
 Each step was published in this repository before the next one began.
 
+## Write-up
+
+Two articles give an account of the experiment:
+[Measuring a judge before training it](https://2501project.dev/en/blog/measuring-before-training/),
+on preparing the measurement, and
+[Training on a MacBook Air, and accepting the verdict](https://2501project.dev/en/blog/training-and-accepting-the-verdict/),
+on the training and the verdict. Both are also available in French:
+[Mesurer un juge avant de l'entraîner](https://2501project.dev/blog/mesurer-avant-d-entrainer/) and
+[Entraîner sur un MacBook Air, et accepter le verdict](https://2501project.dev/blog/entrainer-et-accepter-le-verdict/).
+
 ## Targets in brief
 
 Set in `TARGETS.md` before any training, with HHEM-2.1-open as the comparator; MiniCheck is
