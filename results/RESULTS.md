@@ -469,7 +469,8 @@ entry.
   expected count are committed, so anyone with RAGTruth can regenerate the list. Its SHA-256 is
   `cbc7dec977715c4c2d118270a982d36a6b138c53c289f7d8c94dae9f0f2a6f89`.
 - The adapters. They are published separately as a Gjallar model under `ragnarok-ai`, after this
-  evaluation (section 9 of `TRAINING.md`).
+  evaluation (section 9 of `TRAINING.md`). They were published on 2026-11-16: see
+  [`publication.md`](publication.md).
 
 ## Files
 
